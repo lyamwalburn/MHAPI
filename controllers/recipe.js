@@ -14,9 +14,18 @@ module.exports = {
         console.log(req.body)
         //split the instructions by new line
         let steps = req.body.instructions.split(/\r\n/)
+        let ingredients = req.body.ingredients.split(/\r\n/)
         console.log(steps);
         try {
-            await Recipe.create({recipeName: req.body.name, cookingTime: 30})
+            await Recipe.create({
+                recipeName: req.body.name, 
+                cookingTime: 30,
+                cuisineStyle: req.body.style,
+                classification: 'Chicken',
+                ingredients: ingredients,
+                image: req.body.image,
+                instructions: steps,
+            })
             res.redirect('/recipes')
         } catch (err) {
             console.error(err)
