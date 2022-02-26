@@ -1,6 +1,6 @@
 const res = require('express/lib/response')
 const ShoppingList = require('../models/ShoppingList')
-
+const Recipie = require('../models/Recipe')
 
 module.exports = {
 
@@ -28,7 +28,18 @@ module.exports = {
     },
     addMeal: async (req,res)=>{
         try {
-            console.log('Added Meal')
+            console.log(`Added Meal ${req.params.id}`)
+            let recipeData = await Recipie.find({_id: req.params.id}).lean()
+            console.log(recipeData[0].ingredients)
+           for(let i =0;i<recipeData[0].ingredients.length;i++){
+                await ShoppingList.create({
+                    ingredient: recipeData[0].ingredients[i], 
+                    done: false,
+                    ammount: '100g',
+                })
+            }
+            res.redirect('/recipes')
+           
         } catch (err) {
             console.error(err)
         }
