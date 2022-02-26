@@ -8,8 +8,15 @@
 </head>
 <body>
     <h1>Shopping List</h1>
-    <% for(let i =0; i< items.length;i++) { %>
-        <h3><%= items[i].ingredient %></h3>
-    <% } %>
+    <ul>
+        <% for(let i =0; i< items.length;i++) { %>
+            <li class='shoppingItem' data-id='<%=items[i]._id%>'>
+            <span><%= items[i].ingredient %></span>
+            <span class="del"> Delete</span>
+           </li>
+        <% } %>
+    </ul>
+    <a href="/">Home</a>
+    <script src="/main.js"></script>
 </body>
 </html>

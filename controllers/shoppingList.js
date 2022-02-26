@@ -43,6 +43,16 @@ module.exports = {
         } catch (err) {
             console.error(err)
         }
+    },
+    deleteItem: async (req,res)=>{
+        console.log(req.body);
+        try{
+            await ShoppingList.findOneAndDelete({_id:req.body.itemIdFromJSFile})
+            console.log('Deleted Item')
+            res.json('Deleted it')
+        } catch(err){
+            console.error(err)
+        }
     }
 
 }
