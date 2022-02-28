@@ -12,12 +12,13 @@
     <ul>
         <% for(let i =0; i< items.length;i++) { %>
             <li class='shoppingItem' data-id='<%=items[i]._id%>'>
-            <span class='<%= items[i].done === true ? 'completed' : 'not'%>'><%= items[i].ingredient %></span>
-            <span class="del"> Delete</span>
+                <span class='<%= items[i].done === true ? 'completed' : 'not'%>'><%= items[i].ammount %> <%= items[i].ingredient %></span>
+                <span class="del"> Delete</span>
            </li>
         <% } %>
     </ul>
     <a href="/">Home</a>
+    <button class="del-all">Delete All List Items</button>
     <script src="/main.js"></script>
 </body>
 </html>

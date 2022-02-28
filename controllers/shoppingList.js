@@ -37,12 +37,12 @@ module.exports = {
             console.log(`Added Meal ${req.params.id}`)
             let recipeData = await Recipie.find({_id: req.params.id}).lean()
             console.log(recipeData[0].ingredients)
+
            for(let i =0;i<recipeData[0].ingredients.length;i++){
-                await ShoppingList.create({
-                    ingredient: recipeData[0].ingredients[i], 
-                    done: false,
-                    ammount: '100g',
-                })
+                await ShoppingList.updateOne({  ingredient : recipeData[0].ingredients[i],
+                                                done: false,
+                                             },{ $inc:{ammount: 1} },{ upsert: true}
+                                            )
             }
             res.redirect('/recipes')
            
@@ -57,6 +57,18 @@ module.exports = {
             console.log('Deleted Item')
             res.json('Deleted it')
         } catch(err){
+            console.error(err)
+        }
+    },
+    deleteAllItems: async (req,res)=> {
+       console.log('Clearing Shopping List')
+        try {
+            //TODO - only remove current logged in users items from the collection - req auth to be implemented 
+
+            await ShoppingList.deleteMany({})
+            console.log('Deleted All items')
+            res.json('List Deleted')
+        } catch (error) {
             console.error(err)
         }
     }

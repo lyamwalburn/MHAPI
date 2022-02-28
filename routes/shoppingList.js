@@ -7,5 +7,6 @@ router.put('/markDone', shoppingListController.markDone)
 router.put('/markIncomplete', shoppingListController.markIncomplete)
 router.post('/addMeal/:id',shoppingListController.addMeal)
 router.delete('/deleteItem',shoppingListController.deleteItem)
+router.delete('/clearList',shoppingListController.deleteAllItems)
 
 module.exports = router

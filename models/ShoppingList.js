@@ -6,8 +6,8 @@ const ShoppingListSchema = new mongoose.Schema({
         required: true
    },
    ammount: {
-       type: String,
-       required: false
+       type: Number,
+       required: true
    },
    done: {
        type: Boolean,

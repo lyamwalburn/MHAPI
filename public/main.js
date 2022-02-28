@@ -1,6 +1,7 @@
 const deleteBtn = document.querySelectorAll('.del')
 const listItem = document.querySelectorAll('span.not')
 const itemComplete = document.querySelectorAll('span.completed')
+const delAllButton = document.querySelector('.del-all').addEventListener('click', deleteAllItems)
 
 Array.from(deleteBtn).forEach((el)=>{
     el.addEventListener('click', deleteItem)
@@ -68,4 +69,20 @@ async function markIncomplete(){
         console.log(err)
     }
 }
-// add clear all button
+
+async function deleteAllItems(){
+    //TODO - warn user before deleting all items
+    try {
+        const response = await fetch('shoppingList/clearList', {
+            method: 'delete',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+            })
+        })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+    } catch (err) {
+        console.error(err)
+    }
+}
