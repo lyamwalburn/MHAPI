@@ -13,7 +13,7 @@
         <h1><%= recipies[i].recipeName %></h1>
         <h3><%= recipies[i].cuisineStyle %></h3>
         <span>Cooking Time <%= recipies[i].cookingTime%> minutes</span>
-        <a href='/recipies/_id'>Link</a>
+        <a href='/recipies/_id'>More Information</a>
         <form action="/shoppingList/addMeal/<%=recipies[i]._id %>" method="POST">
             <button type="submit">Add</button>
         </form>

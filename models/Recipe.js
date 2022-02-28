@@ -1,31 +1,6 @@
 const mongoose = require('mongoose')
 
-/*
-let recipes = [
-    {
-        id: 1,
-        recipieName: 'Chicken Tika Masala',
-        cookingTime: '40 minutes',
-        cuisineStyle: 'Indian',
-        cassification: 'Chicken',
-        ingredients: [{
-            chicken: '250g',
-            rice: '300g',
-            yoghurt: '80g',
-            tumeric: '1tsp',
-            paprika: '1.5tsp',
-            garamMasala: '1tsp'
-        }],
-        image: 'www.instagram.com',
-        instructions: [{
-            step1: 'cook chicken',
-            step2: 'cook masala',
-            step3: 'eat'
-        }]
-    }
-]
-*/
-///
+//TODO add ammounts with ingredients so ingredients is object like {Chicken breasts : 2}, {Red Pepper : 1}, for spices sauces flours should contain units e.g { Paprika : 1, unit : 'tsp'}, {Soy sauce : 30, unit :'ml'}
 const RecipieSchema = new mongoose.Schema({
     recipeName: {
         type: String,

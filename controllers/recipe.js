@@ -15,7 +15,7 @@ module.exports = {
         //split the instructions by new line
         let steps = req.body.instructions.split(/\r\n/)
         let ingredients = req.body.ingredients.split(/\r\n/)
-        console.log(steps);
+        //TODO - store ingredient ammounts and make cooking time changeable
         try {
             await Recipe.create({
                 recipeName: req.body.name, 

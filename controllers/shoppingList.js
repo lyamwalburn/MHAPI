@@ -34,10 +34,10 @@ module.exports = {
     },
     addMeal: async (req,res)=>{
         try {
-            console.log(`Added Meal ${req.params.id}`)
             let recipeData = await Recipie.find({_id: req.params.id}).lean()
-            console.log(recipeData[0].ingredients)
 
+
+            //TODO - fix items not pairing if its been marked as done on the shopping list
            for(let i =0;i<recipeData[0].ingredients.length;i++){
                 await ShoppingList.updateOne({  ingredient : recipeData[0].ingredients[i],
                                                 done: false,
@@ -51,22 +51,18 @@ module.exports = {
         }
     },
     deleteItem: async (req,res)=>{
-        console.log(req.body);
         try{
             await ShoppingList.findOneAndDelete({_id:req.body.itemIdFromJSFile})
-            console.log('Deleted Item')
             res.json('Deleted it')
         } catch(err){
             console.error(err)
         }
     },
     deleteAllItems: async (req,res)=> {
-       console.log('Clearing Shopping List')
         try {
             //TODO - only remove current logged in users items from the collection - req auth to be implemented 
 
             await ShoppingList.deleteMany({})
-            console.log('Deleted All items')
             res.json('List Deleted')
         } catch (error) {
             console.error(err)
