@@ -14,14 +14,20 @@ module.exports = {
     },
     markDone: async (req,res)=>{
         try {
-            console.log('Mark Complete')
+            await ShoppingList.findOneAndUpdate({_id:req.body.itemIdFromJSFile},{
+                done: true
+            })
+            res.json('marked complete')
         } catch (err) {
             console.error(err)
         }
     },
     markIncomplete: async (req,res)=>{
         try {
-            console.log('Mark Complete')
+            await ShoppingList.findOneAndUpdate({_id:req.body.itemIdFromJSFile},{
+                done: false
+            })
+            res.json('marked incomplete')
         } catch (err) {
             console.error(err)
         }
