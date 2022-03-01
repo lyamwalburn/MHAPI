@@ -36,12 +36,11 @@ module.exports = {
         try {
             let recipeData = await Recipie.find({_id: req.params.id}).lean()
 
-
-            //TODO - fix items not pairing if its been marked as done on the shopping list
+            console.log(recipeData[0])
            for(let i =0;i<recipeData[0].ingredients.length;i++){
                 await ShoppingList.updateOne({  ingredient : recipeData[0].ingredients[i],
                                                 done: false,
-                                             },{ $inc:{ammount: 1} },{ upsert: true}
+                                             },{ $inc:{ammount: recipeData[0].ingredients[i].ammount} },{ upsert: true}
                                             )
             }
             res.redirect('/recipes')
