@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="/css/styles.css">
     <title>Shopping List</title>
 </head>
+<header>
+    <a href="/auth/logout">Logout</a>
+</header>
 <body>
     <h1><%= username %>'s Shopping List</h1>
     <ul>
@@ -17,7 +20,7 @@
            </li>
         <% } %>
     </ul>
-    <a href="/">Home</a>
+    <a href="/recipes">All Meals</a>
     <button class="del-all">Delete All List Items</button>
     <script src="/main.js"></script>
 </body>

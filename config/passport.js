@@ -26,7 +26,7 @@ module.exports = function (passport) {
         clockSkew: config.creds.clockSkew,
       },
       async (accessToken, refreshToken, profile, done) => {
-        console.log('auth: ', profile)
+        //console.log('auth: ', profile)
         const newUser = {
           microsoftId: profile.oid,
           displayName: profile.displayName,

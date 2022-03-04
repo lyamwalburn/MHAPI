@@ -33,12 +33,12 @@ module.exports = {
         }
     },
     addMeal: async (req,res)=>{
-        console.log(req.user)
         try {
+            //Add the chosen meal's ingredients to our shopping list
             let recipeData = await Recipie.find({_id: req.params.id}).lean()
-
             console.log(recipeData[0])
            for(let i =0;i<recipeData[0].ingredients.length;i++){
+               //if this ingredient is already in the list just update it's ammount
                 await ShoppingList.updateOne({  ingredient : recipeData[0].ingredients[i].item,
                                                 done: false,
                                                 unit: recipeData[0].ingredients[i].unit,
@@ -46,6 +46,7 @@ module.exports = {
                                              },{ $inc:{ammount: recipeData[0].ingredients[i].ammount} },{ upsert: true}
                                             )
             }
+            //TODO - Add the recipie id to the user so we can keep track of what meals they are having
             res.redirect('/recipes')
            
         } catch (err) {
@@ -61,9 +62,7 @@ module.exports = {
         }
     },
     deleteAllItems: async (req,res)=> {
-        try {
-            //TODO - only remove current logged in users items from the collection - req auth to be implemented 
-
+        try {           
             await ShoppingList.deleteMany({microsoftId : req.user.microsoftId})
             res.json('List Deleted')
         } catch (error) {
