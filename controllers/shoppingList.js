@@ -6,7 +6,7 @@ module.exports = {
 
     getShoppingList: async(req,res)=>{
         try {
-            let listItems = await ShoppingList.find({ microsoftId: req.user.microsoftId})   //todo find only current users items once auth added
+            let listItems = await ShoppingList.find({ microsoftId: req.user.microsoftId})   
             res.render('shoppingList.ejs', {items : listItems, username : req.user.displayName})
         } catch (err) {
             console.error(err)
@@ -64,7 +64,7 @@ module.exports = {
         try {
             //TODO - only remove current logged in users items from the collection - req auth to be implemented 
 
-            await ShoppingList.deleteMany({})
+            await ShoppingList.deleteMany({microsoftId : req.user.microsoftId})
             res.json('List Deleted')
         } catch (error) {
             console.error(err)
