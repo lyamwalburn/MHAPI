@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/recipies-styles.css">
     <title>Recipies</title>
 </head>
 <header>
@@ -11,22 +12,30 @@
 </header>
 <body>
     <h1>Hi, <%= username %>, Choose some meals</h1>
-
-    <% for(let i =0; i< recipies.length;i++) { %>
-    <div class="div">
-        <h1><%= recipies[i].recipeName %></h1>
-        <h3><%= recipies[i].cuisineStyle %></h3>
-        <span>Cooking Time <%= recipies[i].cookingTime%> minutes</span>
-        <a href='/recipies/_id'>More Information</a>
-        <img src="<%= recipies[i].image %>" alt="Picture of finished recipie">
-        <form action="/shoppingList/addMeal/<%=recipies[i]._id %>" method="POST">
-            <button type="submit">Add</button>
-        </form>
+    <div class="meals-grid-container">
+        <nav>
+            <h3>Nav  Bar</h3>
+            <ul>
+                <li><a href="/recipes/addRecipe">Create meal</a></li>
+                <li><a href="/shoppingList"><%= username %>'s Shopping List</a></li>
+            </ul>
+        </nav>
+        <div class="meals-container">
+            <% for(let i =0; i< recipies.length;i++) { %>
+                <div class="meal-display">
+                    <h2><%= recipies[i].recipeName %></h2>
+                    <img src="<%= recipies[i].image %>" alt="Picture of finished recipie">
+                    <h3><%= recipies[i].cuisineStyle %></h3>
+                    <p>Cooking Time <%= recipies[i].cookingTime%> minutes</p>
+                    <a href='/recipies/_id'>More Information</a>
+                    <form action="/shoppingList/addMeal/<%=recipies[i]._id %>" method="POST">
+                        <button type="submit">Add</button>
+                    </form>
+                </div>
+            <% } %>
+        </div>
     </div>
 
-   <% } %>
-
-    <a href="/recipes/addRecipe">Create meal</a>
-    <a href="/shoppingList"><%= username %>'s Shopping List</a>
+  
 </body>
 </html>
