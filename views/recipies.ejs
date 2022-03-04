@@ -7,7 +7,8 @@
     <title>Recipies</title>
 </head>
 <body>
-    <h1>Recipies</h1>
+    <h1>Hi, <%= username %>, Choose some meals</h1>
+
     <% for(let i =0; i< recipies.length;i++) { %>
     <div class="div">
         <h1><%= recipies[i].recipeName %></h1>
@@ -22,6 +23,6 @@
    <% } %>
 
     <a href="/recipes/addRecipe">Create meal</a>
-    <a href="/shoppingList">Shopping List</a>
+    <a href="/shoppingList"><%= username %>'s Shopping List</a>
 </body>
 </html>

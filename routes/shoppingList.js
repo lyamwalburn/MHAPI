@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router()
 const shoppingListController = require('../controllers/shoppingList')
+const { ensureAuth, ensureGuest} = require('../middleware/auth')
 
-router.get('/', shoppingListController.getShoppingList)
+router.get('/',ensureAuth, shoppingListController.getShoppingList)
 router.put('/markDone', shoppingListController.markDone)
 router.put('/markIncomplete', shoppingListController.markIncomplete)
-router.post('/addMeal/:id',shoppingListController.addMeal)
-router.delete('/deleteItem',shoppingListController.deleteItem)
-router.delete('/clearList',shoppingListController.deleteAllItems)
+router.post('/addMeal/:id',ensureAuth,shoppingListController.addMeal)
+router.delete('/deleteItem',ensureAuth,shoppingListController.deleteItem)
+router.delete('/clearList',ensureAuth,shoppingListController.deleteAllItems)
 
 module.exports = router

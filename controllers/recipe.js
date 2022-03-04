@@ -3,9 +3,10 @@ const Recipe = require('../models/Recipe')
 
 module.exports = {
     getRecipies: async (req,res) => {
+        console.log(req.user)
         try {
             const allRecipies = await Recipe.find()
-            res.render('recipies.ejs', { recipies : allRecipies})
+            res.render('recipies.ejs', { recipies : allRecipies, username: req.user.displayName})
         } catch (err) {
             console.error(err)
         }
