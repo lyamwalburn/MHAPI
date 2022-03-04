@@ -18,6 +18,7 @@
         <h3><%= recipies[i].cuisineStyle %></h3>
         <span>Cooking Time <%= recipies[i].cookingTime%> minutes</span>
         <a href='/recipies/_id'>More Information</a>
+        <img src="<%= recipies[i].image %>" alt="Picture of finished recipie">
         <form action="/shoppingList/addMeal/<%=recipies[i]._id %>" method="POST">
             <button type="submit">Add</button>
         </form>
