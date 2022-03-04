@@ -2,16 +2,24 @@ const mongoose = require('mongoose')
 //TODO fix structure so that ammount isn't stored twice once in ingredient object and independantly currently this should not be the case
 const ShoppingListSchema = new mongoose.Schema({
     ingredient: {
-        type: Object,
-        required: true
+        type: String,
+        required: true,
    },
    ammount: {
        type: Number,
-       required: true
+       required: true,
+   },
+   unit: {
+       type: String,
+       required: false,
+   },
+   microsoftId: {
+       type: String,
+       required: false,
    },
    done: {
        type: Boolean,
-       required: true
+       required: true,
    }
 
 })

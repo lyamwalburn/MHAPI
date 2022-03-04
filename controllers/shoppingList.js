@@ -7,7 +7,7 @@ module.exports = {
     getShoppingList: async(req,res)=>{
         try {
             let listItems = await ShoppingList.find()   //todo find only current users items once auth added
-            res.render('shoppingList.ejs', {items : listItems})
+            res.render('shoppingList.ejs', {items : listItems, username : req.user.displayName})
         } catch (err) {
             console.error(err)
         }
@@ -33,13 +33,16 @@ module.exports = {
         }
     },
     addMeal: async (req,res)=>{
+        console.log(req.user)
         try {
             let recipeData = await Recipie.find({_id: req.params.id}).lean()
 
             console.log(recipeData[0])
            for(let i =0;i<recipeData[0].ingredients.length;i++){
-                await ShoppingList.updateOne({  ingredient : recipeData[0].ingredients[i],
+                await ShoppingList.updateOne({  ingredient : recipeData[0].ingredients[i].item,
                                                 done: false,
+                                                unit: recipeData[0].ingredients[i].unit,
+                                                microsoftId: req.user.microsoftId,
                                              },{ $inc:{ammount: recipeData[0].ingredients[i].ammount} },{ upsert: true}
                                             )
             }

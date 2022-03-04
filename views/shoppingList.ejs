@@ -8,11 +8,11 @@
     <title>Shopping List</title>
 </head>
 <body>
-    <h1>Shopping List</h1>
+    <h1><%= username %>'s Shopping List</h1>
     <ul>
         <% for(let i =0; i< items.length;i++) { %>
             <li class='shoppingItem' data-id='<%=items[i]._id%>'>
-                <span class='<%= items[i].done === true ? 'completed' : 'not'%>'><%= items[i].ammount %><%=items[i].ingredient.unit%> <%= items[i].ingredient.item %></span>
+                <span class='<%= items[i].done === true ? 'completed' : 'not'%>'><%= items[i].ammount %><%=items[i].unit%> <%= items[i].ingredient %></span>
                 <span class="del"> Delete</span>
            </li>
         <% } %>
