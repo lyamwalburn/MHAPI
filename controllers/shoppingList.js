@@ -6,7 +6,7 @@ module.exports = {
 
     getShoppingList: async(req,res)=>{
         try {
-            let listItems = await ShoppingList.find()   //todo find only current users items once auth added
+            let listItems = await ShoppingList.find({ microsoftId: req.user.microsoftId})   //todo find only current users items once auth added
             res.render('shoppingList.ejs', {items : listItems, username : req.user.displayName})
         } catch (err) {
             console.error(err)
