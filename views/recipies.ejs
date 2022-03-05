@@ -12,25 +12,29 @@
 </header>
 <body>
     <h1>Hi, <%= username %>, Choose some meals</h1>
-    <div class="meals-grid-container">
-        <nav>
-            <h3>Nav  Bar</h3>
-            <ul>
-                <li><a href="/recipes/addRecipe">Create meal</a></li>
-                <li><a href="/shoppingList"><%= username %>'s Shopping List</a></li>
-            </ul>
-        </nav>
-        <div class="meals-container">
+    <div class="wrapper">
+        <div class="main-nav">
+            <nav>
+                <h3>Nav  Bar</h3>
+                <ul>
+                    <li><a href="/recipes/addRecipe">Create meal</a></li>
+                    <li><a href="/shoppingList"><%= username %>'s Shopping List</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="meals-wrapper">
             <% for(let i =0; i< recipies.length;i++) { %>
-                <div class="meal-display">
-                    <h2><%= recipies[i].recipeName %></h2>
-                    <img src="<%= recipies[i].image %>" alt="Picture of finished recipie">
-                    <h3><%= recipies[i].cuisineStyle %></h3>
-                    <p>Cooking Time <%= recipies[i].cookingTime%> minutes</p>
-                    <a href='/recipies/_id'>More Information</a>
-                    <form action="/shoppingList/addMeal/<%=recipies[i]._id %>" method="POST">
-                        <button type="submit">Add</button>
-                    </form>
+                <div class="meal-container">
+                    <div class="meal-image" style='background:url(<%= recipies[i].image %>)'></div>
+                    <div class="meal-info">
+                        <h2><%= recipies[i].recipeName %></h2>
+                        <p><%= recipies[i].cuisineStyle %></p>
+                        <p>Cooking Time <%= recipies[i].cookingTime%> minutes</p>
+                        <a href='/recipies/_id' class="btn">More Information</a>
+                        <form action="/shoppingList/addMeal/<%=recipies[i]._id %>" method="POST">
+                            <button href="submit" class="btn">Add</button>
+                        </form>
+                    </div>
                 </div>
             <% } %>
         </div>
