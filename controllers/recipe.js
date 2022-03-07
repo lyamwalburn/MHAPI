@@ -1,5 +1,6 @@
 const res = require('express/lib/response')
 const Recipe = require('../models/Recipe')
+const User = require('../models/User')
 
 module.exports = {
     getRecipies: async (req,res) => {
@@ -28,11 +29,10 @@ module.exports = {
             }
             mealIngredients.push(obj)
         })
-        //TODO - make cooking time changeable
         try {
             await Recipe.create({
                 recipeName: req.body.name, 
-                cookingTime: 30,
+                cookingTime: req.body.cookingTime,
                 cuisineStyle: req.body.style,
                 classification: 'Chicken',
                 ingredients: mealIngredients,
@@ -46,5 +46,25 @@ module.exports = {
     },
     addRecipe: (req,res)=>{
         res.render('addMeal.ejs')
+    },
+    getSelectedMeals: async (req,res)=>{
+        try {
+            //Currently ignore's if you have chosen same meal twice despite id being in twice on mongo TODO - fix
+            const user = await User.find({microsoftId: req.user.microsoftId})
+            const userMeals = await Recipe.find( {_id : {$in: user[0].currentMeals}})
+            res.render('selectedMeals.ejs', {recipies: userMeals, username: req.user.displayName})
+        } catch (err) {
+            console.error(err)
+        }
+
+        
+    },
+    deleteMeal: async (req,res)=>{
+        try{
+            await User.findOneAndUpdate({microsoftId: req.user.microsoftId}, {$pull : {currentMeals: req.body.itemIdFromJSFile}})
+            res.json('Deleted it')
+        } catch(err){
+            console.error(err)
+        }
     }
 }

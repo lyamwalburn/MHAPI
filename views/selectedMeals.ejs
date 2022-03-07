@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/recipies-styles.css">
+    <script src="https://kit.fontawesome.com/ff67ff0440.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selected Meals</title>
+</head>
+<body>
+    <h1>Meals the user has chosen will go here so they can find them quick and then remove them once done with that meal</h1>
+    <div class="wrapper">
+        <%- include('./partials/nav.ejs') %>
+            <div class="meals-wrapper">
+                <% for(let i =0; i< recipies.length;i++) { %>
+                    <div class="meal-container">
+                        <div class="meal-image" style='background:url(<%= recipies[i].image %>) center no-repeat'></div>
+                        <div class="meal-info">
+                            <h2><%= recipies[i].recipeName %></h2>
+                            <p><i class="fa-solid fa-mortar-pestle"></i> <%= recipies[i].cuisineStyle %></p>
+                            <p><i class="fa-solid fa-hourglass"></i> <%= recipies[i].cookingTime%> minutes</p>
+                            <a href='/recipies/_id' class="btn"><i class="fa-solid fa-utensils"></i> Get Cooking</a>  
+                            <a href='#' data-id="<%= recipies[i]._id %>" class="btn del"><i class="fa-solid fa-trash-can"></i>Delete</a>      
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+    </div>
+    <script src="/js/selectedMeals.js"></script>
+</body>
+</html>

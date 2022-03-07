@@ -1,6 +1,7 @@
 const res = require('express/lib/response')
 const ShoppingList = require('../models/ShoppingList')
 const Recipie = require('../models/Recipe')
+const User = require('../models/User')
 
 module.exports = {
 
@@ -46,7 +47,9 @@ module.exports = {
                                              },{ $inc:{ammount: recipeData[0].ingredients[i].ammount} },{ upsert: true}
                                             )
             }
-            //TODO - Add the recipie id to the user so we can keep track of what meals they are having
+            //Add the recipie id to the user so we can keep track of what meals they are having
+            await User.updateOne( {microsoftId: req.user.microsoftId},{ $push: {currentMeals: req.params.id}})
+          
             res.redirect('/recipes')
            
         } catch (err) {

@@ -1,22 +1,3 @@
-:root {
-  --primary: silver;
-  --dark: black;
-  --light: white;
-  --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
-}
-
-html {
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 10px;
-}
-
-body {
-  background: #ccc;
-  margin: 3rem 5rem;
-  line-height: 1.4;
-}
-
 .btn {
   color: white;
   background: black;
@@ -29,12 +10,6 @@ body {
   background: grey;
 }
 
-.wrapper {
-  display: grid;
-  grid-template-columns: 10% 90%;
-  grid-gap: 2rem;
-}
-
 .meals-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
@@ -45,7 +20,7 @@ body {
 /* Meal Container */
 .meal-container {
   display: grid;
-  grid-template-rows: 60% 40%;
+  grid-template-rows: 50% 50%;
   grid-gap: 0.5rem;
   height: 40rem;
   background: var(--primary);
@@ -55,6 +30,10 @@ body {
 .meal-info {
   display: flex;
   flex-direction: column;
+}
+
+.meal-image {
+  max-height: 200px;
 }
 
 .meal-info a {
