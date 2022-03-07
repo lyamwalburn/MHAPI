@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/recipies-styles.css">
+    <script src="https://kit.fontawesome.com/ff67ff0440.js" crossorigin="anonymous"></script>
     <title>Recipies</title>
 </head>
 <header>
@@ -17,22 +18,23 @@
             <nav>
                 <h3>Nav  Bar</h3>
                 <ul>
-                    <li><a href="/recipes/addRecipe">Create meal</a></li>
-                    <li><a href="/shoppingList"><%= username %>'s Shopping List</a></li>
+                    <li><a href="/recipes/addRecipe"><i class="fa-solid fa-pen"></i>Create meal</a></li>
+                    <li><a href="/shoppingList"><i class="fa-solid fa-cart-shopping"></i>Shopping List</a></li>
+                    <li><a href="/shoppingList"><i class="fa-solid fa-pizza-slice"></i>Selected Meals</a></li>
                 </ul>
             </nav>
         </div>
         <div class="meals-wrapper">
             <% for(let i =0; i< recipies.length;i++) { %>
                 <div class="meal-container">
-                    <div class="meal-image" style='background:url(<%= recipies[i].image %>)'></div>
+                    <div class="meal-image" style='background:url(<%= recipies[i].image %>) center no-repeat'></div>
                     <div class="meal-info">
                         <h2><%= recipies[i].recipeName %></h2>
-                        <p><%= recipies[i].cuisineStyle %></p>
-                        <p>Cooking Time <%= recipies[i].cookingTime%> minutes</p>
-                        <a href='/recipies/_id' class="btn">More Information</a>
+                        <p><i class="fa-solid fa-mortar-pestle"></i> <%= recipies[i].cuisineStyle %></p>
+                        <p><i class="fa-solid fa-hourglass"></i> <%= recipies[i].cookingTime%> minutes</p>
+                        <a href='/recipies/_id' class="btn"><i class="fa-solid fa-circle-info"></i> More Information</a>
                         <form action="/shoppingList/addMeal/<%=recipies[i]._id %>" method="POST">
-                            <button href="submit" class="btn">Add</button>
+                            <button href="submit" class="btn"><i class="fa-solid fa-circle-plus"></i> Add</button>
                         </form>
                     </div>
                 </div>

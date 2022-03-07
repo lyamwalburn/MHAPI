@@ -1,5 +1,5 @@
 :root {
-  --primary: grey;
+  --primary: silver;
   --dark: black;
   --light: white;
   --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
@@ -22,14 +22,11 @@ body {
   background: black;
   padding: 0.6rem 1.3rem;
   text-decoration: none;
+  text-align: center;
   border: 0;
 }
 .btn:hover {
-  background: var(--primary);
-}
-
-img {
-  max-width: 100%;
+  background: grey;
 }
 
 .wrapper {
@@ -48,15 +45,20 @@ img {
 }
 
 .main-nav a {
+  display: flex;
+  justify-content: space-between;
   background: var(--primary);
-  display: block;
+  color: var(--dark);
+  box-shadow: var(--shadow);
   text-decoration: none;
   padding: 0.8rem;
-  text-align: center;
-  color: var(--dark);
   text-transform: uppercase;
   font-size: 1.1rem;
-  box-shadow: var(--shadow);
+}
+
+.main-nav i {
+  font-size: 2rem;
+  padding: 0.8rem;
 }
 
 .main-nav a:hover {
@@ -66,18 +68,18 @@ img {
 
 .meals-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
   grid-gap: 2em;
   padding: 1em;
-  border: 1px solid black;
 }
 
 /* Meal Container */
 .meal-container {
   display: grid;
-  grid-template-rows: 70% 30%;
-  grid-gap: 1.5rem;
+  grid-template-rows: 60% 40%;
+  grid-gap: 0.5rem;
   height: 40rem;
+  background: var(--primary);
   box-shadow: var(--shadow);
 }
 
@@ -86,11 +88,38 @@ img {
   flex-direction: column;
 }
 
+.meal-info a {
+  display: flex;
+  justify-content: start;
+  font-size: 1.1rem;
+  margin: 0.5rem 1rem 1rem 1rem;
+}
+
+.meal-info i {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
 .meal-info h2,
 p {
-  margin: 0;
+  margin: 0.1rem 1rem 0 1rem;
+}
+
+.meal-info h2 {
+  font-size: 2.2rem;
+}
+
+.meal-info p {
+  font-size: 1.2rem;
+}
+
+.meal-info form {
+  margin: 0 1rem 1rem 1rem;
 }
 form button {
+  display: flex;
+  justify-content: start;
+  font-size: 1.1rem;
   width: 100%;
   cursor: pointer;
 }
