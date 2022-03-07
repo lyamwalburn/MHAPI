@@ -24,7 +24,7 @@
                         <h2><%= recipies[i].recipeName %></h2>
                         <p><i class="fa-solid fa-mortar-pestle"></i> <%= recipies[i].cuisineStyle %></p>
                         <p><i class="fa-solid fa-hourglass"></i> <%= recipies[i].cookingTime%> minutes</p>
-                        <a href='/recipies/_id' class="btn"><i class="fa-solid fa-circle-info"></i> More Information</a>
+                        <a href='/recipes/mealInfo/<%= recipies[i]._id %>' class="btn"><i class="fa-solid fa-circle-info"></i> More Information</a>
                         <form action="/shoppingList/addMeal/<%=recipies[i]._id %>" method="POST">
                             <button href="submit" class="btn"><i class="fa-solid fa-circle-plus"></i> Add</button>
                         </form>

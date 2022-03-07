@@ -8,5 +8,6 @@ router.post('/createRecipe', recipieController.createRecipe)
 router.get('/addRecipe',recipieController.addRecipe)
 router.get('/selectedMeals',recipieController.getSelectedMeals)
 router.put('/selectedMeals/deleteMeal',recipieController.deleteMeal)
+router.get('/mealInfo/:id',recipieController.getMealInfo)
 
 module.exports = router

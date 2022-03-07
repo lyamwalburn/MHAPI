@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/recipies-styles.css">
+    <script src="https://kit.fontawesome.com/ff67ff0440.js" crossorigin="anonymous"></script>
+    <title>Current Meal</title>
+</head>
+<body>
+    <h1>Show recipie ingredients and instructions</h1>
+    <div class="wrapper">
+        <%- include('./partials/nav.ejs') %>
+        <div class="main-content">
+            <!-- Recipie Information -->
+            <h1><%= mealData.recipeName %></h1>
+            <div class="ingredients-container">
+                <h3>Ingredients</h3>
+                <ul>
+                    <% for(let i =0; i< mealData.ingredients.length;i++) { %>
+                        <li><%= mealData.ingredients[i].ammount%><%= mealData.ingredients[i].unit%> <%=mealData.ingredients[i].item %></li>
+                    <% } %>
+                </ul>
+            </div>
+            <div class="instructions-container">
+                <h3>Instructions</h3>
+                <ul>
+                    <% for(let i =0; i< mealData.instructions.length;i++) { %>
+                        <li><%= mealData.instructions[i]%></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

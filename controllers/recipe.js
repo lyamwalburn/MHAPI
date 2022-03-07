@@ -1,3 +1,4 @@
+const { render } = require('express/lib/response')
 const res = require('express/lib/response')
 const Recipe = require('../models/Recipe')
 const User = require('../models/User')
@@ -66,5 +67,15 @@ module.exports = {
         } catch(err){
             console.error(err)
         }
+    },
+    getMealInfo: async (req,res)=>{
+        console.log(req.params.id)
+        try {
+            const data = await Recipe.find({_id: req.params.id})
+            res.render('mealInfo.ejs', {mealData: data[0]})
+        } catch (err) {
+            console.error(err)
+        }
+        
     }
 }

@@ -1,8 +1,11 @@
 const deleteButton = document.querySelectorAll('.del')
 
+
 Array.from(deleteButton).forEach((el)=>{
     el.addEventListener('click', deleteItem)
 })
+
+
 
 async function deleteItem(){
     const itemId = this.dataset.id
