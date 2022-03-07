@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/list-styles.css">
+    <script src="https://kit.fontawesome.com/ff67ff0440.js" crossorigin="anonymous"></script>
     <title>Shopping List</title>
 </head>
 <header>
@@ -12,16 +14,30 @@
 </header>
 <body>
     <h1><%= username %>'s Shopping List</h1>
-    <ul>
-        <% for(let i =0; i< items.length;i++) { %>
-            <li class='shoppingItem' data-id='<%=items[i]._id%>'>
-                <span class='<%= items[i].done === true ? 'completed' : 'not'%>'><%= items[i].ammount %><%=items[i].unit%> <%= items[i].ingredient %></span>
-                <span class="del"> Delete</span>
-           </li>
-        <% } %>
-    </ul>
-    <a href="/recipes">All Meals</a>
-    <button class="del-all">Delete All List Items</button>
+    <div class="wrapper">
+        <%- include('./partials/nav.ejs') %>
+        <!-- <div class="main-nav">
+            <nav>
+                <h3>Nav  Bar</h3>
+                <ul>
+                    <li><a href="/recipes/addRecipe"><i class="fa-solid fa-pen"></i>Create meal</a></li>
+                    <li><a href="/recipes"><i class="fa-solid fa-clipboard-list"></i>All Meals</a></li>
+                    <li><a href="/shoppingList"><i class="fa-solid fa-pizza-slice"></i>Selected Meals</a></li>
+                </ul>
+            </nav>
+        </div> -->
+        <div class="list-container">
+            <ul>
+                <% for(let i =0; i< items.length;i++) { %>
+                    <li class='shoppingItem' data-id='<%=items[i]._id%>'>
+                        <span class='<%= items[i].done === true ? 'completed' : 'not'%>'><%= items[i].ammount %><%=items[i].unit%> <%= items[i].ingredient %></span>
+                        <i class=" del fa-solid fa-trash-can"></i>
+                </li>
+                <% } %>
+            </ul>
+            <button class="del-all btn"><i class="fa-solid fa-dumpster"></i>Delete All List Items</button>
+        </div>
+    </div>
     <script src="/main.js"></script>
 </body>
 </html>

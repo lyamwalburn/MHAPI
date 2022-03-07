@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/recipies-styles.css">
     <script src="https://kit.fontawesome.com/ff67ff0440.js" crossorigin="anonymous"></script>
     <title>Recipies</title>
@@ -14,16 +15,7 @@
 <body>
     <h1>Hi, <%= username %>, Choose some meals</h1>
     <div class="wrapper">
-        <div class="main-nav">
-            <nav>
-                <h3>Nav  Bar</h3>
-                <ul>
-                    <li><a href="/recipes/addRecipe"><i class="fa-solid fa-pen"></i>Create meal</a></li>
-                    <li><a href="/shoppingList"><i class="fa-solid fa-cart-shopping"></i>Shopping List</a></li>
-                    <li><a href="/shoppingList"><i class="fa-solid fa-pizza-slice"></i>Selected Meals</a></li>
-                </ul>
-            </nav>
-        </div>
+        <%- include('./partials/nav.ejs') %>
         <div class="meals-wrapper">
             <% for(let i =0; i< recipies.length;i++) { %>
                 <div class="meal-container">
