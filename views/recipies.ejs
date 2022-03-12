@@ -19,7 +19,8 @@
         <div class="meals-wrapper">
             <% for(let i =0; i< recipies.length;i++) { %>
                 <div class="meal-container">
-                    <div class="meal-image" style='background:url(<%= recipies[i].image %>) center no-repeat'></div>
+                    <!-- style='background:url(<%= recipies[i].image %>) center no-repeat'> -->
+                    <img class="meal-image" src='<%= recipies[i].image %>'></img>
                     <div class="meal-info">
                         <h2><%= recipies[i].recipeName %></h2>
                         <p><i class="fa-solid fa-mortar-pestle"></i> <%= recipies[i].cuisineStyle %></p>
