@@ -23,7 +23,7 @@
                     <img class="meal-image" src='<%= recipies[i].image %>'></img>
                     <div class="meal-info">
                         <h2><%= recipies[i].recipeName %></h2>
-                        <p><i class="fa-solid fa-mortar-pestle"></i> <%= recipies[i].cuisineStyle %></p>
+                        <p><i class="fa-solid fa-earth-americas"></i> <%= recipies[i].cuisineStyle %></p>
                         <p><i class="fa-solid fa-hourglass"></i> <%= recipies[i].cookingTime%> minutes</p>
                         <a href='/recipes/mealInfo/<%= recipies[i]._id %>' class="btn"><i class="fa-solid fa-circle-info"></i> More Information</a>
                         <form action="/shoppingList/addMeal/<%=recipies[i]._id %>" method="POST">
