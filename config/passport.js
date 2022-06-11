@@ -26,7 +26,7 @@ module.exports = async function (passport) {
                     //if there is no user with that email create the user
                     let newUser = new User()
                     //set user's local credentials
-                    newUser.displayName = 'name' //workout how to get this from the input form TODO
+                    newUser.displayName = req.body.name
                     newUser.email = email
                     newUser.password = newUser.generateHash(password)
 
