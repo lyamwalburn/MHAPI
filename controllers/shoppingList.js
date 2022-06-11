@@ -7,7 +7,7 @@ module.exports = {
 
     getShoppingList: async(req,res)=>{
         try {
-            let listItems = await ShoppingList.find({ microsoftId: req.user.microsoftId})   
+            let listItems = await ShoppingList.find({ userId: req.user._id})   
             res.render('shoppingList.ejs', {items : listItems, username : req.user.displayName})
         } catch (err) {
             console.error(err)
@@ -37,18 +37,18 @@ module.exports = {
         try {
             //Add the chosen meal's ingredients to our shopping list
             let recipeData = await Recipie.find({_id: req.params.id}).lean()
-            console.log(recipeData[0])
+            console.log(req.user._id)
            for(let i =0;i<recipeData[0].ingredients.length;i++){
                //if this ingredient is already in the list just update it's ammount
                 await ShoppingList.updateOne({  ingredient : recipeData[0].ingredients[i].item,
                                                 done: false,
                                                 unit: recipeData[0].ingredients[i].unit,
-                                                microsoftId: req.user.microsoftId,
+                                                userId: req.user._id,
                                              },{ $inc:{ammount: recipeData[0].ingredients[i].ammount} },{ upsert: true}
                                             )
             }
             //Add the recipie id to the user so we can keep track of what meals they are having
-            await User.updateOne( {microsoftId: req.user.microsoftId},{ $push: {currentMeals: req.params.id}})
+            await User.updateOne( {_id: req.user._id},{ $push: {currentMeals: req.params.id}})
           
             res.redirect('/recipes')
            
@@ -66,7 +66,7 @@ module.exports = {
     },
     deleteAllItems: async (req,res)=> {
         try {           
-            await ShoppingList.deleteMany({microsoftId : req.user.microsoftId})
+            await ShoppingList.deleteMany({userId : req.user._id})
             res.json('List Deleted')
         } catch (error) {
             console.error(err)

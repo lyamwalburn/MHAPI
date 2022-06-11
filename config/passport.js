@@ -1,52 +1,62 @@
-const OIDCStrategy = require('passport-azure-ad').OIDCStrategy
+const LocalStrategy = require('passport-local').Strategy
 const mongoose = require('mongoose')
 const config = require('../config/config')
 const User = require('../models/User')
 
-module.exports = function (passport) {
-  passport.use(
-    new OIDCStrategy({
-        identityMetadata: config.creds.identityMetadata,
-        clientID: config.creds.clientID,
-        responseType: config.creds.responseType,
-        responseMode: config.creds.responseMode,
-        redirectUrl: config.creds.redirectUrl,
-        allowHttpForRedirectUrl: config.creds.allowHttpForRedirectUrl,
-        clientSecret: config.creds.clientSecret,
-        validateIssuer: config.creds.validateIssuer,
-        isB2C: config.creds.isB2C,
-        issuer: config.creds.issuer,
-        passReqToCallback: config.creds.passReqToCallback,
-        scope: config.creds.scope,
-        loggingLevel: config.creds.loggingLevel,
-        nonceLifetime: config.creds.nonceLifetime,
-        nonceMaxAmount: config.creds.nonceMaxAmount,
-        useCookieInsteadOfSession: config.creds.useCookieInsteadOfSession,
-        cookieEncryptionKeys: config.creds.cookieEncryptionKeys,
-        clockSkew: config.creds.clockSkew,
-      },
-      async (accessToken, refreshToken, profile, done) => {
-        //console.log('auth: ', profile)
-        const newUser = {
-          microsoftId: profile.oid,
-          displayName: profile.displayName,
-        }
+module.exports = async function (passport) {
 
-        try {
-          let user = await User.findOne({ microsoftId: profile.oid })
+      //Local Signup -----------------------------------------------------------------------------------------------------------------------------------------------------------
+    passport.use('local-signup', new LocalStrategy({
+        usernameField: 'email',
+        passwordField: 'password',
+        passReqToCallback: true
+    },
+    function(req,email,password,done){
+        //async
+        //user.findOne wont fire unless data is sent back
+        process.nextTick(function(){
+            //find user whos email is the same asthe forms email
+            User.findOne({'email' : email}, function(err,user){
+                if(err)
+                    return done(err)
+                //check to see if theres already a user with that email
+                if(user){
+                    return done(null,false)
+                } else {
+                    //if there is no user with that email create the user
+                    let newUser = new User()
+                    //set user's local credentials
+                    newUser.displayName = 'name' //workout how to get this from the input form TODO
+                    newUser.email = email
+                    newUser.password = newUser.generateHash(password)
 
-          if (user) {
-            done(null, user)
-          } else {
-            user = await User.create(newUser)
-            done(null, user)
-          }
-        } catch (err) {
-          console.error(err)
-        }
-      }
-    )
-  )
+                    newUser.save(function(err){
+                        if(err)
+                            throw err
+                        return done(null,newUser)
+                    })
+                }
+            })
+        })
+    }
+    ))
+
+    passport.use('local-login', new LocalStrategy({
+      usernameField: 'email',
+      passwordField: 'password',
+      passReqToCallback: true
+  }, function(req,email,password,done){
+      User.findOne({'email':email}, function(err,user){
+          if(err)
+              return done(err)
+          if(!user)
+              return done(null,false)
+          if(!user.validPassword(password))
+              return done(null,false)
+
+          return done(null,user)
+      })
+  }))
 
   passport.serializeUser((user, done) => {
     done(null, user.id)

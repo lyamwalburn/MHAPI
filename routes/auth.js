@@ -4,56 +4,30 @@ const config = require('../config/config')
 const router = express.Router()
 
 
-router.get('/login',
-  function(req, res, next) {
-    passport.authenticate('azuread-openidconnect', 
-      { 
-        response: res,                      
-        resourceURL: config.resourceURL,    
-        customState: 'my_state',            
-        failureRedirect: '/' 
-      }
-    )(req, res, next);
-  },
-  function(req, res) {
-    console.log('Login was called in the Sample');
-    res.redirect('/recipes');
-});
+router.get('/login', (req, res) => {
+  res.render('login.ejs')
+})
 
-router.get('/openid/return',
-  function(req, res, next) {
-    passport.authenticate('azuread-openidconnect', 
-      { 
-        response: res,    
-        failureRedirect: '/'  
-      }
-    )(req, res, next);
-  },
-  function(req, res) {
-    console.log('We received a return from AzureAD.');
-    res.redirect('/recipes');
-  });
+router.post('/login', passport.authenticate('local-login', {
+  successRedirect: '/recipes',
+  failureRedirect: '/auth/login',
+  failureFlash: false
+}))
 
-router.post('/openid/return',
-  function(req, res, next) {
-    passport.authenticate('azuread-openidconnect', 
-      { 
-        response: res,    
-        failureRedirect: '/'  
-      }
-    )(req, res, next);
-  },
-  function(req, res) {
-    console.log('We received a return from AzureAD.');
-    res.redirect('/recipes');
-  });
+  //Logout
+  router.get('/logout', (req, res) => {
+    req.logout()
+    res.redirect('/')
+})
 
-
-router.get('/logout', function(req, res){
-  req.session.destroy(function(err) {
-    req.logOut();
-    res.redirect(config.destroySessionUrl);
-  });
-});
+router.get('/signup', (req, res) => {
+  res.render('signup.ejs')
+})
+ //process the signup form
+ router.post('/signup', passport.authenticate('local-signup', {
+  successRedirect: '/auth/login',
+  failureRedirect: '/auth/signup',
+  failureFlash: false
+}))
 
 module.exports = router

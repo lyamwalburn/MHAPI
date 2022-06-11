@@ -13,7 +13,7 @@ const ShoppingListSchema = new mongoose.Schema({
        type: String,
        required: false,
    },
-   microsoftId: {
+   userId: {
        type: String,
        required: false,
    },

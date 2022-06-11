@@ -11,6 +11,7 @@
   "author": "Lyam Walburn",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "connect-mongo": "^4.6.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
@@ -22,6 +23,7 @@
     "mongoose": "^6.2.3",
     "nodemon": "^2.0.15",
     "passport": "^0.5.2",
-    "passport-azure-ad": "^4.3.1"
+    "passport-azure-ad": "^4.3.1",
+    "passport-local": "^1.0.0"
   }
 }
