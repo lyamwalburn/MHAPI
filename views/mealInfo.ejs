@@ -10,9 +10,21 @@
     <title>Current Meal</title>
 </head>
 <body>
-    <h1><%= mealData.recipeName %></h1>
     <div class="wrapper">
         <%- include('./partials/nav.ejs') %>
+        <div class="meal-header">
+            <picture class="left">
+                <source media="(min-width: 600px)" srcset="">
+                <source media="(min-width: 601px)" srcset="">
+                <img aria-hidden="true" decoding="async" src="<%= mealData.image %>" alt="picture of meal" width="500" height="500">
+            </picture>
+            <div class="right">
+                <h2><%= mealData.recipeName %></h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero, dolorem? Rerum ad sed aut praesentium totam quam quas, velit ab id, doloribus animi labore laborum repellat officia unde corporis quaerat, consequuntur quidem consectetur. Assumenda, sint nisi. Eum sint illo porro.</p>
+                <span><i class="fa-solid fa-earth-americas"></i><%= mealData.cuisineStyle %></span>
+                <span><i class="fa-solid fa-hourglass"></i><%= mealData.cookingTime %> minutes</span>
+            </div>
+        </div>
         
         <div class="main-content">
             <!-- Recipie Information -->
@@ -25,10 +37,10 @@
                 </ul>
             </div>
             <div class="right-box">
-                <h3>Instructions</h3>
+                <h3>Cooking Instructions</h3>
                 <ul>
                     <% for(let i =0; i< mealData.instructions.length;i++) { %>
-                        <li><%= mealData.instructions[i]%></li>
+                        <li><span><%= i +1 %>. </span><%= mealData.instructions[i]%></li>
                     <% } %>
                 </ul>
             </div>

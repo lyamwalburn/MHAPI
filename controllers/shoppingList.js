@@ -37,7 +37,6 @@ module.exports = {
         try {
             //Add the chosen meal's ingredients to our shopping list
             let recipeData = await Recipie.find({_id: req.params.id}).lean()
-            console.log(req.user._id)
            for(let i =0;i<recipeData[0].ingredients.length;i++){
                //if this ingredient is already in the list just update it's ammount
                 await ShoppingList.updateOne({  ingredient : recipeData[0].ingredients[i].item,

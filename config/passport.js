@@ -5,7 +5,7 @@ const User = require('../models/User')
 
 module.exports = async function (passport) {
 
-      //Local Signup -----------------------------------------------------------------------------------------------------------------------------------------------------------
+    //Local Signup -----------------------------------------------------------------------------------------------------------------------------------------------------------
     passport.use('local-signup', new LocalStrategy({
         usernameField: 'email',
         passwordField: 'password',
@@ -40,7 +40,7 @@ module.exports = async function (passport) {
         })
     }
     ))
-
+    //Local-login--------------------------------------------------------------
     passport.use('local-login', new LocalStrategy({
       usernameField: 'email',
       passwordField: 'password',
