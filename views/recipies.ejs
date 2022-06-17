@@ -19,14 +19,14 @@
         <div class="meals-wrapper">
             <% for(let i =0; i< recipies.length;i++) { %>
                 <div class="meal-container">
-                    <!-- style='background:url(<%= recipies[i].image %>) center no-repeat'> -->
-                    <img class="meal-image" src='<%= recipies[i].image %>'></img>
+                    <picture data-time="<%= recipies[i].cookingTime%>">
+                        <img aria-hidden="true" loading="lazy" decoding="async" src="<%= recipies[i].image %>" alt="meal picture" width="250" height="250">
+                    </picture>
+
                     <div class="meal-info">
                         <h2><%= recipies[i].recipeName %></h2>
-                        <p><i class="fa-solid fa-earth-americas"></i> <%= recipies[i].cuisineStyle %></p>
-                        <p><i class="fa-solid fa-hourglass"></i> <%= recipies[i].cookingTime%> minutes</p>
-                        <a href='/recipes/mealInfo/<%= recipies[i]._id %>' class="btn"><i class="fa-solid fa-circle-info"></i> More Information</a>
                         <form action="/shoppingList/addMeal/<%=recipies[i]._id %>" method="POST">
+                            <a href='/recipes/mealInfo/<%= recipies[i]._id %>' class="btn"><i class="fa-solid fa-circle-info"></i> More Information</a>
                             <button href="submit" class="btn"><i class="fa-solid fa-circle-plus"></i> Add</button>
                         </form>
                     </div>

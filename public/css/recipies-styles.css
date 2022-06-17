@@ -1,13 +1,14 @@
 .btn {
   color: white;
-  background: black;
+  background: var(--buttonPrimary);
   padding: 0.6rem 1.3rem;
+  margin-bottom: 2rem;
   text-decoration: none;
   text-align: center;
   border: 0;
 }
 .btn:hover {
-  background: grey;
+  background: var(--buttonHover);
 }
 
 .meals-wrapper {
@@ -19,60 +20,88 @@
 
 /* Meal Container */
 .meal-container {
-  display: grid;
-  grid-template-rows: 50% 50%;
-  grid-gap: 0.5rem;
-  height: 40rem;
+  display: flex;
+  flex-direction: column;
   background: var(--primary);
   box-shadow: var(--shadow);
+}
+
+.meal-container picture {
+  position: relative;
+}
+
+
+.meal-container picture::after{
+  content: attr(data-time);
+  position: absolute;
+  display: block;
+  height: 15%;
+  width: 15%;
+  /* background: #fff; */
+  bottom: 5%;
+  left: 5%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border: 3px solid black;
+  z-index: 1;
+}
+
+.meal-container picture::before{
+  content: '';
+  position: absolute;
+  display: block;
+  height: 15%;
+  width: 15%;
+  background: #fff;
+  opacity: .7;
+  bottom: 5%;
+  left: 5%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border: 3px solid transparent; 
 }
 
 .meal-info {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .meal-info h2 {
   font-size: 2rem;
-}
-
-.meal-image {
-  max-height: 100%;
-  min-width: 100%;
+  margin: .5rem 0;
+  padding: 0 1rem;
 }
 
 .meal-info a {
+  width: 40%;
+  margin: .5rem;
   display: flex;
-  justify-content: start;
-  font-size: 1.1rem;
-  margin: 0.5rem 1rem 1rem 1rem;
-}
-
-.meal-info i {
-  font-size: 1.5rem;
-  margin-right: 1rem;
-}
-
-.meal-info h2,
-p {
-  margin: 0.1rem 1rem 0 1rem;
-}
-
-.meal-info p {
-  font-size: 1.2rem;
-}
-
-.meal-info p + p {
-  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .meal-info form {
-  margin: 0 1rem 1rem 1rem;
-}
-form button {
   display: flex;
-  justify-content: start;
-  font-size: 1.1rem;
-  width: 100%;
-  cursor: pointer;
+  justify-self: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
 }
+
+.meal-info form button {
+ margin: 0 .5rem;
+ width: 40%;
+ display: flex;
+ justify-content: space-between;
+}
+

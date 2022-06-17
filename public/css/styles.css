@@ -1,7 +1,9 @@
 :root {
-  --primary: silver;
+  --primary: #f4f7fa;
   --dark: black;
   --light: white;
+  --buttonPrimary: #3b36c9;
+  --buttonHover: #625ED4;
   --shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
 }
 

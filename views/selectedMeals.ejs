@@ -16,15 +16,18 @@
             <div class="meals-wrapper">
                 <% for(let i =0; i< recipies.length;i++) { %>
                     <div class="meal-container">
-                        <img class="meal-image" src='<%= recipies[i].image %>'></img>
+                        <picture data-time="<%= recipies[i].cookingTime%>">
+                            <img aria-hidden="true" loading="lazy" decoding="async" src="<%= recipies[i].image %>" alt="meal picture" width="250" height="250">
+                        </picture>
+    
                         <div class="meal-info">
                             <h2><%= recipies[i].recipeName %></h2>
-                            <p><i class="fa-solid fa-mortar-pestle"></i> <%= recipies[i].cuisineStyle %></p>
-                            <p><i class="fa-solid fa-hourglass"></i> <%= recipies[i].cookingTime%> minutes</p>
-                            <a href='/recipes/mealInfo/<%= recipies[i]._id %>' class="btn info"><i class="fa-solid fa-utensils"></i> Get Cooking</a>  
-                            <a href='#' data-id="<%= recipies[i]._id %>" class="btn del"><i class="fa-solid fa-trash-can"></i>Delete</a>      
+                            <form action="/shoppingList/addMeal/<%=recipies[i]._id %>" method="POST">
+                                <a href='/recipes/mealInfo/<%= recipies[i]._id %>' class="btn"><i class="fa-solid fa-circle-info"></i> More Information</a>
+                                <a href='#' data-id="<%= recipies[i]._id %>" class="btn del"><i class="fa-solid fa-trash-can"></i>Delete</a>
+                            </form>
                         </div>
-                    </div>
+                    </div>       
                 <% } %>
             </div>
     </div>

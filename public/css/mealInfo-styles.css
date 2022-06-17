@@ -1,4 +1,5 @@
-.meal-header {
+.meal-info {
+  grid-column: 2/5;
   display: flex;
   gap: 1.5rem;
   justify-content: space-between;
@@ -8,8 +9,34 @@
   border-radius: .2rem;
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
 }
+.right{
+  position: relative;
+}
 
-.left{
+.btn {
+  position: absolute;
+  bottom: 15%;
+  color: white;
+  background: var(--buttonPrimary);
+  padding: 0.6rem 1.3rem;
+  text-decoration: none;
+  text-align: left;
+  border: 0;
+  padding: 1.5rem;
+  min-width: 15rem;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: var(--buttonHover);
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 10% 1fr 1fr 1fr;
+  grid-gap: 2rem;
 }
 
 .right h2{
@@ -29,66 +56,63 @@
   margin-right: .5rem;
 }
 
-.main-content {
-  display: flex;
-  grid-column-start: 2;
-  margin-left: 1rem;
-}
-.main-content h3 {
-  text-align: center;
-  font-size: 2.8rem;
-}
-
 li {
   list-style: none;
   padding: 0.2rem;
   font-size: 2.4rem;
 }
 
-.left-box {
+.ingredients {
+  grid-column: 2/3;
   padding-left: 1rem;
   padding-right: 1rem;
-  margin-right: 1rem;
-  width: 30%;
+  padding-bottom: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem; 
   background-color: #f4f7fa;
   border-radius: .2rem;
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
 }
 
-.left-box h3 {
+.ingredients h3 {
+  font-size: 2.8rem;
   text-align: left;
   font-weight: 500;
+  padding-left: 2rem;
 }
 
-.right-box {
-  width: 70%;
+.instructions {
+  grid-column: 3/5;
+  grid-row: 2/4;
   background-color: #f4f7fa;
   border-radius: .2rem;
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.05);
+  padding-bottom: 2rem;
 }
 
-.right-box h3 {
+.instructions h3 {
+  font-size: 2.8rem;
   text-align: left;
   padding-left: 2rem;
   font-weight: 500;
 }
 
-.right-box ul {
+.instructions ul {
   padding-left: 2rem;
 }
 
-.right-box ul li  {
+.instructions ul li  {
   margin-bottom: 2rem;
   padding-right: 2rem;
   text-align: left;
   display: flex;
 }
 
-.right-box ul li:last-of-type  {
+.instructions ul li:last-of-type  {
   margin-bottom: 0;
 }
 
-.right-box ul li span {
+.instructions ul li span {
   font-weight: bold;
   margin-right: 1rem;
   height: 100%;
