@@ -1,3 +1,4 @@
+const { type } = require('express/lib/response')
 const mongoose = require('mongoose')
 //TODO fix structure so that ammount isn't stored twice once in ingredient object and independantly currently this should not be the case
 const ShoppingListSchema = new mongoose.Schema({
@@ -20,7 +21,11 @@ const ShoppingListSchema = new mongoose.Schema({
    done: {
        type: Boolean,
        required: true,
-   }
+   },
+   image: {
+    type: String,
+    required: false,
+    }
 
 })
 

@@ -30,6 +30,7 @@
             <ul>
                 <% for(let i =0; i< items.length;i++) { %>
                     <li class='shoppingItem' data-id='<%=items[i]._id%>'>
+                    <img src="<%= items[i].image %>" alt="">
                     <span class='<%= items[i].done === true ? 'completed' : 'not'%>'>
                         <span class="item"><%= items[i].ingredient %></span><span class="ammount"><%= items[i].ammount %></span><span class="unit"><%=items[i].unit%></span>
                     </span>

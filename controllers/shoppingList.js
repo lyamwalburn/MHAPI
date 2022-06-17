@@ -42,6 +42,7 @@ module.exports = {
                 await ShoppingList.updateOne({  ingredient : recipeData[0].ingredients[i].item,
                                                 done: false,
                                                 unit: recipeData[0].ingredients[i].unit,
+                                                image: recipeData[0].ingredients[i].image,
                                                 userId: req.user._id,
                                              },{ $inc:{ammount: recipeData[0].ingredients[i].ammount} },{ upsert: true}
                                             )
