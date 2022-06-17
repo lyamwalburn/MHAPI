@@ -30,8 +30,11 @@
             <ul>
                 <% for(let i =0; i< items.length;i++) { %>
                     <li class='shoppingItem' data-id='<%=items[i]._id%>'>
-                        <span class='<%= items[i].done === true ? 'completed' : 'not'%>'><%= items[i].ammount %><%=items[i].unit%> <%= items[i].ingredient %></span>
+                    <span class='<%= items[i].done === true ? 'completed' : 'not'%>'>
+                        <span class="item"><%= items[i].ingredient %></span><span class="ammount"><%= items[i].ammount %></span><span class="unit"><%=items[i].unit%></span>
+                    </span>
                         <i class=" del fa-solid fa-trash-can"></i>
+                    
                 </li>
                 <% } %>
             </ul>

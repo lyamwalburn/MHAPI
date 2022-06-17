@@ -56,3 +56,17 @@ body {
   background: var(--dark);
   color: var(--light);
 }
+
+.btn {
+  color: white;
+  background: var(--buttonPrimary);
+  padding: 0.6rem 1.3rem;
+  text-decoration: none;
+  text-align: center;
+  border: 0;
+  border-radius: 5px;
+}
+.btn:hover {
+  background: var(--buttonHover);
+  color: white;
+}

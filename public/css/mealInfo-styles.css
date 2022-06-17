@@ -27,6 +27,7 @@
   display: flex;
   justify-content: space-between;
   font-weight: 600;
+  border-radius: 3px;
 }
 
 .btn:hover {
