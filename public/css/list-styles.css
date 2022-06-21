@@ -1,6 +1,11 @@
 
+h1{
+  text-align: center;
+}
+
 .list-container {
-  width: 100%;
+  width: 75%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-items: center;
