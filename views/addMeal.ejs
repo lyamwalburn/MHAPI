@@ -4,31 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/createMeal-styles.css">
+    <script src="https://kit.fontawesome.com/ff67ff0440.js" crossorigin="anonymous"></script>
     <title>Add Meal</title>
 </head>
 <body>
-    <form action="/recipes/createRecipe" method="POST">
-        <label for="name">Name</label>
-        <input type="text" name="name">
+    <div class="wrapper">
+        <%- include('./partials/nav.ejs') %>
+        <div class="formContainer">
+            <form action="/recipes/createRecipe" method="POST">
+                <div class="mealInfo">
+                    <label for="name">Recipe Name</label>
+                    <input type="text" name="name">
+                    
+                    <label for="style">Style</label>
+                    <input type="text" name="style">
+                    
+                    <label for="cookingTime">Cooking Time</label>
+                    <input type="text" name="cookingTime">
+                
+                    <label for="image">Image Link</label>
+                    <input type="text" name="image">
+                </div>
+                <h2>Ingredients</h2>
+                <div class="ingredientsContainer">
+                    <div class="left">
+                        <label for="ingredient" >Ingredient</label>
+                        <input type="text" name="ingredient" id="ingredientName">
+                        <label for="ammount">Ammount</label>
+                        <input type="text" name="ammount" id="ingredientAmmount">
+                        <label for="unit">Unit</label>
+                        <input type="text" name="unit" id="ingredientUnit">
+                        <label for="ingredientImage">Image</label>
+                        <input type="text" name="ingredientImage" id="ingredientImage">
+                        <button class="addIngredientButton">Add</button>
+                    </div>
+                    <ul class="ingredientsList">
         
-        <label for="style">Style</label>
-        <input type="text" name="style">
+                    </ul>
+                </div>
+                <textarea name="ingredients" id="ingredientsTA" cols="50" rows="10"></textarea>
+            
+                <label for="instructions">Instructions</label>
+                <textarea name="instructions" id="" cols="50" rows="10"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
         
-        <label for="cookingTime">Cooking Time</label>
-        <input type="text" name="cookingTime">
-       
-        <label for="image">Image Link</label>
-        <input type="text" name="image">
-
-        <label for="ingredients">Ingredients</label>
-        <textarea name="ingredients" id="" cols="50" rows="10"></textarea>
-       
-        <label for="instructions">Instructions</label>
-        <textarea name="instructions" id="" cols="50" rows="10"></textarea>
-
-        <input type="submit">
-    </form>
-    <a href="/shoppingList">Shopping List</a>
-    <a href="/recipes">All Meals</a>
+    </div>
 </body>
+<script defer src="/js/addMeal.js"></script>
 </html>

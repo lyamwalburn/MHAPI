@@ -19,14 +19,15 @@ module.exports = {
         //split the instructions & ingredients by new line
         let steps = req.body.instructions.split(/\r\n/)
         let ingredients = req.body.ingredients.split(/\r\n/)
-        //split ingredient into item, ammount, unit and put into obj
+        //split ingredient into item, ammount, unit, image path and put into obj
         mealIngredients = []
         ingredients.forEach(ingredient => {
             let i = ingredient.split(',')
             let obj = {
                 item : i[0],
                 ammount: i[1],
-                unit: i[2]
+                unit: i[2],
+                image: i[3]
             }
             mealIngredients.push(obj)
         })

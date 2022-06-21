@@ -24,8 +24,7 @@ h1 {
   justify-content: flex-start;
   width: 75%;
   margin: 0 auto;
-  /* grid-template-columns: repeat(auto-fit, minmax(200px, 250px)); */
-  /* grid-gap: 2em; */
+  margin-bottom: 2rem;
 }
 
 /* Meal Container */

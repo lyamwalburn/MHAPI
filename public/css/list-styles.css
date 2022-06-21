@@ -50,6 +50,10 @@
   text-transform: capitalize;
 }
 
+.itemContainer picture {
+  margin-right: 1rem;
+}
+
 .list-container li:hover {
   background: var(--dark);
   color: var(--light);
