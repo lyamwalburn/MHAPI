@@ -12,7 +12,10 @@
 <body>
     <div class="wrapper">
         <%- include('./partials/nav.ejs') %>
-        <h1><%= username %>'s Shopping List</h1>
+        <header>
+            <h1><%= username %>'s Shopping List</h1>
+            <p>Once the shopping's done the yummyiness begins!</p>
+        </header>
         <div class="list-container">
             <ul>
                 <% for(let i =0; i< items.length;i++) { %>

@@ -12,6 +12,7 @@
 <body>
     <div class="wrapper">
         <%- include('./partials/nav.ejs') %>
+        <div class="info-wrapper">
         <div class="meal-info">
             <picture class="left">
                 <source media="(min-width: 600px)" srcset="">
@@ -28,28 +29,30 @@
                 </form>
             </div>
         </div>
+        <!-- <div class="instructionsContainer"> -->
          <!-- Recipie Information -->
-         <div class="ingredients">   
-            <h3>Ingredients</h3>
-            <ul>
-                <% for(let i =0; i< mealData.ingredients.length;i++) { %>
-                    <li>
-                        <!-- <img src="<%= mealData.ingredients[i].image %>"> -->
-                        <picture>
-                            <img aria-hidden="true" loading="lazy" decoding="async" src="<%= mealData.ingredients[i].image %>" alt="<%=mealData.ingredients[i].item %>" width="50" height="50">
-                        </picture>
-                        <%= mealData.ingredients[i].ammount%><%= mealData.ingredients[i].unit%> <%=mealData.ingredients[i].item %>
-                    </li>
-                <% } %>
-            </ul>
-        </div>
-        <div class="instructions">
-            <h3>Cooking Instructions</h3>
-            <ul>
-                <% for(let i =0; i< mealData.instructions.length;i++) { %>
-                    <li><span><%= i +1 %>. </span><%= mealData.instructions[i]%></li>
-                <% } %>
-            </ul>
+            <div class="ingredients">   
+                <h3>Ingredients</h3>
+                <ul>
+                    <% for(let i =0; i< mealData.ingredients.length;i++) { %>
+                        <li>
+                            <!-- <img src="<%= mealData.ingredients[i].image %>"> -->
+                            <picture>
+                                <img aria-hidden="true" loading="lazy" decoding="async" src="<%= mealData.ingredients[i].image %>" alt="<%=mealData.ingredients[i].item %>" width="50" height="50">
+                            </picture>
+                            <%= mealData.ingredients[i].ammount%><%= mealData.ingredients[i].unit%> <%=mealData.ingredients[i].item %>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+            <div class="instructions">
+                <h3>Cooking Instructions</h3>
+                <ul>
+                    <% for(let i =0; i< mealData.instructions.length;i++) { %>
+                        <li><span><%= i +1 %>. </span><%= mealData.instructions[i]%></li>
+                    <% } %>
+                </ul>
+            </div>
         </div>
     </div>
 </body>

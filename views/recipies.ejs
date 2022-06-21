@@ -12,7 +12,10 @@
 <body>
     <div class="wrapper">
         <%- include('./partials/nav.ejs') %>
-        <h1>Hi, <%= username %>, Choose some meals</h1>
+        <header>
+            <h1>Hi, <%= username %>, Choose some meals</h1>
+            <p>Choose from our range of scrupmtious meals for inspirational meal ideas!</p>
+        </header>
         <div class="meals-wrapper">
             <% for(let i =0; i< recipies.length;i++) { %>
                 <div class="meal-container">
