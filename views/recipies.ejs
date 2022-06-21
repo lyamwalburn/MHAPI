@@ -9,13 +9,10 @@
     <script src="https://kit.fontawesome.com/ff67ff0440.js" crossorigin="anonymous"></script>
     <title>Recipies</title>
 </head>
-<header>
-    <a href="/auth/logout">Logout</a>
-</header>
 <body>
-    <h1>Hi, <%= username %>, Choose some meals</h1>
     <div class="wrapper">
         <%- include('./partials/nav.ejs') %>
+        <h1>Hi, <%= username %>, Choose some meals</h1>
         <div class="meals-wrapper">
             <% for(let i =0; i< recipies.length;i++) { %>
                 <div class="meal-container">

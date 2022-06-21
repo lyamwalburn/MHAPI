@@ -9,13 +9,10 @@
     <script src="https://kit.fontawesome.com/ff67ff0440.js" crossorigin="anonymous"></script>
     <title>Shopping List</title>
 </head>
-<header>
-    <a href="/auth/logout">Logout</a>
-</header>
 <body>
-    <h1><%= username %>'s Shopping List</h1>
     <div class="wrapper">
         <%- include('./partials/nav.ejs') %>
+        <h1><%= username %>'s Shopping List</h1>
         <div class="list-container">
             <ul>
                 <% for(let i =0; i< items.length;i++) { %>
