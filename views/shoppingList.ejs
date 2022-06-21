@@ -16,26 +16,21 @@
     <h1><%= username %>'s Shopping List</h1>
     <div class="wrapper">
         <%- include('./partials/nav.ejs') %>
-        <!-- <div class="main-nav">
-            <nav>
-                <h3>Nav  Bar</h3>
-                <ul>
-                    <li><a href="/recipes/addRecipe"><i class="fa-solid fa-pen"></i>Create meal</a></li>
-                    <li><a href="/recipes"><i class="fa-solid fa-clipboard-list"></i>All Meals</a></li>
-                    <li><a href="/shoppingList"><i class="fa-solid fa-pizza-slice"></i>Selected Meals</a></li>
-                </ul>
-            </nav>
-        </div> -->
         <div class="list-container">
             <ul>
                 <% for(let i =0; i< items.length;i++) { %>
-                    <li class='shoppingItem' data-id='<%=items[i]._id%>'>
-                    <img src="<%= items[i].image %>" alt="">
-                    <span class='<%= items[i].done === true ? 'completed' : 'not'%>'>
-                        <span class="item"><%= items[i].ingredient %></span><span class="ammount"><%= items[i].ammount %></span><span class="unit"><%=items[i].unit%></span>
+                    <li class='shoppingItem' data-id='<%=items[i]._id%>' >
+                    <!-- <img src="<%= items[i].image %>" alt=""> -->
+                <div class="itemContainer" data-id='<%=items[i]._id%>'>
+                    <picture>
+                        <img aria-hidden="true" loading="lazy" decoding="async" src="<%= items[i].image %>" alt="<%= items[i].ingredient %>" width="75" height="75">
+                    </picture>
+                    <span class="<%= items[i].done === true ? 'completed' : 'not' %>">
+                        <p class="item"><%= items[i].ingredient %><span class="ammount"><%= items[i].ammount %></span><span class="unit"><%=items[i].unit%></span>
+                        </p>
                     </span>
+                </div>
                         <i class=" del fa-solid fa-trash-can"></i>
-                    
                 </li>
                 <% } %>
             </ul>

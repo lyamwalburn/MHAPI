@@ -11,7 +11,6 @@
   padding-left: 5rem;
   flex-wrap: wrap;
   width: 100%;
-  text-align: center;
 }
 
 .list-container li {
@@ -20,13 +19,33 @@
   justify-items: center;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem;
   list-style: none;
   font-size: 3rem;
   box-shadow: var(--shadow);
-  background-color: var(--primary);
+  background-color: #fff;
   margin-right: 2rem;
   margin-bottom: 1rem;
+  padding: 1.5rem;
+  border-radius: 3px;
+}
+
+.itemContainer{
+  display: flex;
+  align-items: center;
+}
+
+.itemContainer .ammount, .itemContainer .unit  {
+  color: gray;
+  font-size: 2rem;
+}
+
+.ammount {
+  margin-left: 1rem;
+}
+
+.itemContainer p {
+  margin: 0;
+  text-transform: capitalize;
 }
 
 .list-container li:hover {
@@ -34,17 +53,16 @@
   color: var(--light);
 }
 
-.list-container li .item{
+.list-container li picture {
+  width: 75px;
+  height: 75px;
+}
+
+.list-container li p .item{
   font-size: 4rem;
   padding-right: 1rem;
-}
-
-.list-container li .ammount {
-  color: gray;
-}
-
-.list-container li .unit {
-  color: gray;
+  margin: 0;
+  text-align: left;
 }
 
 .completed {

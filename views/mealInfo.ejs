@@ -33,7 +33,13 @@
             <h3>Ingredients</h3>
             <ul>
                 <% for(let i =0; i< mealData.ingredients.length;i++) { %>
-                    <li><img src="<%= mealData.ingredients[i].image %>"><%= mealData.ingredients[i].ammount%><%= mealData.ingredients[i].unit%> <%=mealData.ingredients[i].item %></li>
+                    <li>
+                        <!-- <img src="<%= mealData.ingredients[i].image %>"> -->
+                        <picture>
+                            <img aria-hidden="true" loading="lazy" decoding="async" src="<%= mealData.ingredients[i].image %>" alt="<%=mealData.ingredients[i].item %>" width="50" height="50">
+                        </picture>
+                        <%= mealData.ingredients[i].ammount%><%= mealData.ingredients[i].unit%> <%=mealData.ingredients[i].item %>
+                    </li>
                 <% } %>
             </ul>
         </div>
