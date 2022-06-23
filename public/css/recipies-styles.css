@@ -58,7 +58,8 @@ h1 {
   align-items: center;
   font-weight: bold;
   font-size: 1.5rem;
-  border: 3px solid black;
+  color: var(--darkFont);
+  border: 3px solid var(--darkFont);
   z-index: 1;
 }
 
@@ -92,6 +93,7 @@ h1 {
   font-size: 2rem;
   margin: .5rem 0;
   padding: 0 1rem;
+  color: var(--darkFont);
 }
 
 .meal-info a {

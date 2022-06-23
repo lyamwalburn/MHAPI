@@ -25,6 +25,7 @@
   font-size: 3rem;
   box-shadow: var(--shadow);
   background-color: #fff;
+  color: var(--darkFont);
   margin-right: 2rem;
   margin-bottom: 1rem;
   padding: 1.5rem;
