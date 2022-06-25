@@ -81,12 +81,14 @@ form button {
 
 .search-box input {
     margin-bottom: 0;
+    text-transform: capitalize;
+
 }
 
 .autocomplete-box {
     margin-top: 0;
-    padding: 1rem 0;
-    max-height: 10rem;
+    max-height: 20rem;
+    padding: 0;
     overflow-y: auto;
     opacity: 0;
     pointer-events: none;
@@ -95,10 +97,19 @@ form button {
 
 .autocomplete-box li {
     list-style: none;
-    padding: 1rem .5rem;
+    padding: 1rem;
     width: 100%;
     cursor: default;
     border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+}
+
+.autocomplete-box li picture {
+    margin-right: 1rem;
 }
 
 .autocomplete-box li:hover{

@@ -1,5 +1,6 @@
 const addIngredientButton = document.querySelector('.addIngredientButton').addEventListener('click',addIngredient)
-const itemImage = document.querySelector('#ingredientImage')
+const itemName = document.querySelector('#ingredientName')
+const itemAmmount = document.querySelector('#ingredientAmmount')
 const suggestBox = document.querySelector('.autocomplete-box')
 const dirPath = '/images/ingredients/'
 let imagesPaths
@@ -9,8 +10,6 @@ fetch('http://localhost:3000/recipes/getImagePaths')
   .then(data => imagesPaths = data)
 
 function addIngredient(){
-    const itemName = document.querySelector('#ingredientName')
-    const itemAmmount = document.querySelector('#ingredientAmmount')
     const itemUnit = document.querySelector('#ingredientUnit')
     const ingredientsList = document.querySelector('.ingredientsList')
 
@@ -26,19 +25,17 @@ function addIngredient(){
     ingredientsList.appendChild(li)
 
     if(ingredientTA.value !== '')
-        ingredientTA.value += `\n${itemName.value},${itemAmmount.value},${itemUnit.value},${dirPath}${itemImage.value}`
+        ingredientTA.value += `\n${itemName.value},${itemAmmount.value},${itemUnit.value},${dirPath}${itemName.value.replace(' ','-')}.jpeg`
     else 
-        ingredientTA.value += `${itemName.value},${itemAmmount.value},${itemUnit.value},${dirPath}${itemImage.value}`
+        ingredientTA.value += `${itemName.value},${itemAmmount.value},${itemUnit.value},${dirPath}${itemName.value.replace(' ','-')}.jpeg`
 
     itemName.value = ""
     itemAmmount.value = ""
     itemUnit.value = ""
-    itemImage.value = ""
-
     itemName.focus()
 }
 
-itemImage.onkeyup = (e)=> {
+itemName.onkeyup = (e)=> {
     let userInput = e.target.value
     let suggestions = []
     if(userInput){
@@ -46,15 +43,18 @@ itemImage.onkeyup = (e)=> {
             return data.toLowerCase().startsWith(userInput.toLowerCase())
         })
         suggestions = suggestions.map((data)=>{
-            return data = `<li>${data}</li>`
+            return data = `<li><picture>
+            <img aria-hidden="true" loading="lazy" decoding="async" src="${dirPath}${data}" width="40" height="40">
+            </picture>${data.replace('-',' ').replace(/\..+$/, '')}</li>`
         })
        suggestBox.classList.add('active')
        showSuggestions(suggestions)
        let suggestionItems = suggestBox.querySelectorAll('li')
         suggestionItems.forEach(item => {
             item.addEventListener('click',()=> {
-                itemImage.value = item.textContent
+                itemName.value = item.textContent.trim()
                 suggestBox.classList.remove('active')
+                itemAmmount.focus()
             })
         })
     } else {
@@ -67,7 +67,9 @@ function showSuggestions(list){
     if(list.length){
         listData = list.join(' ')
     } else {
-        listData = `<li>${itemImage.value}</li>`
+        //item doesnt exist already so show users input 
+        //perhaps also prompt to upload ingredient image
+        listData = `<li>${itemName.value}</li>`
     }
     suggestBox.innerHTML = listData
 }
