@@ -71,3 +71,42 @@ form button {
 .ingredientsContainer button{
    width: 25%;
 }
+
+.search-box {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    margin-bottom: 1rem;
+}
+
+.search-box input {
+    margin-bottom: 0;
+}
+
+.autocomplete-box {
+    margin-top: 0;
+    padding: 1rem 0;
+    max-height: 10rem;
+    overflow-y: auto;
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+
+.autocomplete-box li {
+    list-style: none;
+    padding: 1rem .5rem;
+    width: 100%;
+    cursor: default;
+    border-radius: 3px;
+}
+
+.autocomplete-box li:hover{
+    background: #efefef;
+}
+
+.autocomplete-box.active {
+    opacity: 1;
+    pointer-events: auto;
+    display: block;
+}

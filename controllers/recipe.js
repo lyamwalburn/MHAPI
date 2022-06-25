@@ -3,6 +3,7 @@ const res = require('express/lib/response')
 const Recipe = require('../models/Recipe')
 const User = require('../models/User')
 
+
 module.exports = {
     getRecipies: async (req,res) => {
         try {
@@ -47,7 +48,15 @@ module.exports = {
         }
     },
     addRecipe: (req,res)=>{
-        res.render('addMeal.ejs')
+        res.render('addMeal.ejs', { images: res.locals.filenames})
+    },
+    getImagePaths: (req,res)=>{
+        //sends a list of the files in the static public/images/ingredients folder
+        // let files =  res.locals.filenames.map(file => {
+        //     return  `/images/ingredients/${file}`
+        // })
+        let files = res.locals.filenames
+        res.send(files.filter((file) => /\.(jpe?g|png)$/.test(file)))
     },
     getSelectedMeals: async (req,res)=>{
         try {
