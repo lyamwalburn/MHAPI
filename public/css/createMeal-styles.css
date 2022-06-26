@@ -63,15 +63,29 @@ form button {
 }
 
 .ingredientsContainer .left{
-    width: 50%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50%;
+    align-content: flex-start;
 }
+
 
 .ingredientsContainer input {
     margin-bottom: 1rem;
- 
+    width: 45%;
+    height: 3rem;
+    margin-right: 1rem;
 }
+
+.ingredientsContainer select {
+    width: 45%;
+    height: 5.4rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    color: gray;
+}
+
 
 .ingredientsContainer button{
    width: 25%;
@@ -80,14 +94,15 @@ form button {
 .search-box {
     display: flex;
     flex-direction: column;
-    background: #fff;
+    /* background: #fff; */
     margin-bottom: 1rem;
+    width: 100%;
 }
 
 .search-box input {
     margin-bottom: 0;
     text-transform: capitalize;
-
+    width: 93%;
 }
 
 .autocomplete-box {
@@ -130,6 +145,8 @@ form button {
     opacity: 1;
     pointer-events: auto;
     display: block;
+    background: #fff;
+    width: 95%;
 }
 
 .ingredientsList{
