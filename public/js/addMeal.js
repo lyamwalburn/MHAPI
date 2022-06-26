@@ -19,8 +19,18 @@ function addIngredient(){
     // const button = document.createElement('button')
     // button.innerHTML = "Delete"
     // button.classList.add('deleteButton')
-
+    const pic = document.createElement('picture')
+    const image = document.createElement('img')
+    image.src = `${dirPath}${itemName.value.replace(' ','-')}.jpeg`
+    image.width = 40
+    image.height = 40
+    image.loading = 'lazy'
+    image.decoding = 'async'
+    pic.appendChild(image)
+    li.appendChild(pic)
     li.appendChild(document.createTextNode(`${itemAmmount.value}${itemUnit.value} ${itemName.value}`))
+    
+
     // li.appendChild(button)
     ingredientsList.appendChild(li)
 
@@ -37,10 +47,10 @@ function addIngredient(){
 
 itemName.onkeyup = (e)=> {
     let userInput = e.target.value
-    let suggestions = []
+    let suggestions = [] 
     if(userInput){
         suggestions = imagesPaths.filter((data)=>{
-            return data.toLowerCase().startsWith(userInput.toLowerCase())
+            return data.toLowerCase().replace('-',' ').startsWith(userInput.toLowerCase())
         })
         suggestions = suggestions.map((data)=>{
             return data = `<li><picture>
