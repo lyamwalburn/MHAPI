@@ -97,6 +97,7 @@ form button {
     /* background: #fff; */
     margin-bottom: 1rem;
     width: 100%;
+    position: relative;
 }
 
 .search-box input {
@@ -147,6 +148,8 @@ form button {
     display: block;
     background: #fff;
     width: 95%;
+    position: absolute;
+    top: 5.5rem;
 }
 
 .ingredientsList{
