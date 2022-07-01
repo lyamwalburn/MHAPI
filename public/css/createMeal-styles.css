@@ -51,7 +51,7 @@ form button {
     margin-right: 1rem;
 }
 
-.ingredientsContainer{
+.ingredientsContainer, .instructionsContainer{
     display: flex;
     justify-content: space-between;
     gap: 1rem;
@@ -62,7 +62,7 @@ form button {
     max-height: 400px;
 }
 
-.ingredientsContainer .left{
+.left{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -87,7 +87,7 @@ form button {
 }
 
 
-.ingredientsContainer button{
+.ingredientsContainer button, .instructionsContainer button{
    width: 25%;
 }
 
@@ -152,7 +152,7 @@ form button {
     top: 5.5rem;
 }
 
-.ingredientsList{
+.ingredientsList, .instructionsList{
     background: #fff;
     width: 50%;
     padding: 0;
@@ -166,4 +166,18 @@ form button {
     max-height: 400px;
     overflow-y:auto;
     border-radius: 3px;
+}
+
+.instructionsList{
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.instructionsList li:nth-child(even){
+    background: #efefef;
+}
+
+.instructionsContainer textarea {
+    width: 100%;
+    height: 85%;
 }
