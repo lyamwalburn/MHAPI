@@ -21,6 +21,8 @@ function addIngredient(){
     const itemUnit = document.querySelector('#ingredientUnit')
     const ingredientsList = document.querySelector('.ingredientsList')
 
+    //TODO - check input is not blank for name and ammount
+
     if(!ingredients[`${itemName.value}`]){
         ingredients[`${itemName.value}`] = {name : itemName.value,ammount : itemAmmount.value, unit: itemUnit.value, image: `${dirPath}${itemName.value.replace(' ','-')}.jpeg`}
         const li = createIngredientLi(itemName.value,itemAmmount.value,itemUnit.value)
@@ -108,17 +110,19 @@ function addInstructionStep(){
     //split the input and feed into paragraphs to maintain spacing on display
     console.log(buildInstructionStepString(instructionInput.value.split('\n')))
     let paragraphs = instructionInput.value.split('\n')
+    const stepContainer = document.createElement('div')
+    stepContainer.classList.add('instructionText')
     paragraphs.forEach(p => {
         //prevent empty elements
        if(p === '') return 
        let element = document.createElement('p')
        element.appendChild(document.createTextNode(p))
-       li.appendChild(element)
+       stepContainer.appendChild(element)
     })
+    li.appendChild(stepContainer)
     //create delete button
-    const button = document.createElement('button')
-    button.innerHTML = "Delete"
-    button.classList.add('deleteButton')
+    const button = document.createElement('i')
+    button.classList.add('del', 'fa-solid', 'fa-trash-can')
     button.type = "button"
     button.addEventListener('click',deleteInstruction)
     li.appendChild(button)

@@ -32,7 +32,7 @@ form label {
 }
 
 form button {
-    width: 100%;
+    width: 50%;
     padding: 1rem;
 }
 
@@ -127,18 +127,25 @@ form button {
 }
 
 .ingredientsList li {
-    width: 45%;
+    width: 100%;
     padding-right: 0;
 }
 
-.ingredientsList li i{
-   width: 10%;
-   margin-left: 1.5rem;
-   color: var(--darkFont);
-   transition: transform .1s ease-in-out;
+.ingredientsList li:hover {
+    background-color: #efefef;
 }
 
-.ingredientsList li i:hover{
+.ingredientsList li i,
+.instructionsList li i{
+   width: 10%;
+   margin-left: auto;
+   color: var(--darkFont);
+   transition: transform .1s ease-in-out;
+   cursor: pointer;
+}
+
+.ingredientsList li i:hover,
+.instructionsList li i:hover{
   transform: scale(1.3);
   color: #444f5a;
  }
@@ -182,8 +189,25 @@ form button {
     flex-wrap: nowrap;
 }
 
+.instructionsList li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .instructionsList li:nth-child(even){
     background: #efefef;
+}
+
+.instructionsList li p {
+   text-align: left;
+   margin-right: .5rem;
+}
+
+.instructionsList li i {
+    text-align: center;
+    font-size: 2rem;
+    width: 20%;
 }
 
 .instructionsContainer textarea {
