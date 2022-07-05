@@ -26,9 +26,6 @@ form textarea {
     margin-bottom: 1rem;
 }
 
-form #ingredientsTA{
-    display: none;
-}
 
 form label {
     margin-bottom: 1rem;
