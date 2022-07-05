@@ -18,6 +18,10 @@ fetch('http://localhost:3000/recipes/getImagePaths')
   .then(data => imagesPaths = data)
 
 function addIngredient(){
+    //check the field has been filled for item name and ammount
+    //TODO - add error message
+    if(itemName.value.trim() === "" || itemAmmount.value.trim() === "") return
+
     const itemUnit = document.querySelector('#ingredientUnit')
     const ingredientsList = document.querySelector('.ingredientsList')
 
@@ -43,7 +47,6 @@ function addIngredient(){
 
 function createIngredientLi(name,ammount,unit){
     const li = document.createElement('li')
-    //<i class=" del fa-solid fa-trash-can"></i>
     const button = document.createElement('i')
     button.classList.add('del', 'fa-solid', 'fa-trash-can')
     button.addEventListener('click',deleteIngredient)
@@ -108,7 +111,7 @@ function addInstructionStep(){
     const instructionsList = document.querySelector('.instructionsList')
     const li = document.createElement('li')
     //split the input and feed into paragraphs to maintain spacing on display
-    console.log(buildInstructionStepString(instructionInput.value.split('\n')))
+   // console.log(buildInstructionStepString(instructionInput.value.split('\n')))
     let paragraphs = instructionInput.value.split('\n')
     const stepContainer = document.createElement('div')
     stepContainer.classList.add('instructionText')
@@ -164,7 +167,12 @@ function deleteIngredient(){
 
 
 function deleteInstruction(){
-    //TODO 
+    //removes the instruction and deletes the li displaying it
+    instructions = instructions.filter(el=>{
+       return !el.startsWith(this.parentElement.childNodes[0].childNodes[0].innerText)
+    })
+    this.parentElement.remove()
+   
 }
 
 async function createRecipe(){

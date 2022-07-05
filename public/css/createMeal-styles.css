@@ -202,6 +202,7 @@ form button {
 .instructionsList li p {
    text-align: left;
    margin-right: .5rem;
+   margin-left: 1.5rem;
 }
 
 .instructionsList li i {
