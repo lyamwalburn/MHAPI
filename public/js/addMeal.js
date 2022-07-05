@@ -41,10 +41,9 @@ function addIngredient(){
 
 function createIngredientLi(name,ammount,unit){
     const li = document.createElement('li')
-    const button = document.createElement('button')
-    button.innerHTML = "Delete"
-    button.classList.add('deleteButton')
-    button.type = "button"
+    //<i class=" del fa-solid fa-trash-can"></i>
+    const button = document.createElement('i')
+    button.classList.add('del', 'fa-solid', 'fa-trash-can')
     button.addEventListener('click',deleteIngredient)
     const pic = document.createElement('picture')
     const image = document.createElement('img')
@@ -161,7 +160,7 @@ function deleteIngredient(){
 
 
 function deleteInstruction(){
-    //TODO requires fix from deleteIngredient
+    //TODO 
 }
 
 async function createRecipe(){

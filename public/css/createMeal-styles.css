@@ -105,7 +105,7 @@ form button {
 
 .autocomplete-box {
     margin-top: 0;
-    max-height: 20rem;
+    max-height: 34rem;
     padding: 0;
     overflow-y: auto;
     opacity: 0;
@@ -130,6 +130,18 @@ form button {
     width: 45%;
     padding-right: 0;
 }
+
+.ingredientsList li i{
+   width: 10%;
+   margin-left: 1.5rem;
+   color: var(--darkFont);
+   transition: transform .1s ease-in-out;
+}
+
+.ingredientsList li i:hover{
+  transform: scale(1.3);
+  color: #444f5a;
+ }
 
 .autocomplete-box li picture, .ingredientsList li picture {
     margin-right: 1rem;
