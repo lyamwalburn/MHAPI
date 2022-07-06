@@ -25,10 +25,8 @@ function addIngredient(){
     const itemUnit = document.querySelector('#ingredientUnit')
     const ingredientsList = document.querySelector('.ingredientsList')
 
-    //TODO - check input is not blank for name and ammount
-
     if(!ingredients[`${itemName.value}`]){
-        ingredients[`${itemName.value}`] = {name : itemName.value,ammount : itemAmmount.value, unit: itemUnit.value, image: `${dirPath}${itemName.value.replace(' ','-')}.jpeg`}
+        ingredients[`${itemName.value}`] = {name : itemName.value,ammount : itemAmmount.value, unit: itemUnit.value, image: `${dirPath}${itemName.value.replaceAll(' ','-')}.jpeg`}
         const li = createIngredientLi(itemName.value,itemAmmount.value,itemUnit.value)
         ingredientsList.appendChild(li)
     }
@@ -52,7 +50,7 @@ function createIngredientLi(name,ammount,unit){
     button.addEventListener('click',deleteIngredient)
     const pic = document.createElement('picture')
     const image = document.createElement('img')
-    image.src = `${dirPath}${name.replace(' ','-')}.jpeg`
+    image.src = `${dirPath}${name.replaceAll(' ','-')}.jpeg`
     image.width = 40
     image.height = 40
     image.loading = 'lazy'
@@ -78,7 +76,7 @@ itemName.onkeyup = (e)=> {
         suggestions = suggestions.map((data)=>{
             return data = `<li><picture>
             <img aria-hidden="true" loading="lazy" decoding="async" src="${dirPath}${data}" width="40" height="40">
-            </picture>${data.replace('-',' ').replace(/\..+$/, '')}</li>`
+            </picture>${data.replaceAll('-',' ').replace(/\..+$/, '')}</li>`
         })
        suggestBox.classList.add('active')
        showSuggestions(suggestions)
@@ -95,13 +93,18 @@ itemName.onkeyup = (e)=> {
     }
 }
 
+//hide the suggest box if focus is moved
+itemName.addEventListener('focusout', ()=> {
+    suggestBox.classList.remove('active')
+})
+
 function showSuggestions(list){
     let listData
     if(list.length){
         listData = list.join(' ')
     } else {
         //item doesnt exist already so show users input 
-        //perhaps also prompt to upload ingredient image
+        //todo also prompt to upload ingredient image
         listData = `<li>${itemName.value}</li>`
     }
     suggestBox.innerHTML = listData
@@ -109,6 +112,7 @@ function showSuggestions(list){
 
 function addInstructionStep(){
     const instructionsList = document.querySelector('.instructionsList')
+    if(instructionInput.value.trim() === "") return
     const li = document.createElement('li')
     //split the input and feed into paragraphs to maintain spacing on display
    // console.log(buildInstructionStepString(instructionInput.value.split('\n')))
@@ -168,6 +172,9 @@ function deleteIngredient(){
 
 function deleteInstruction(){
     //removes the instruction and deletes the li displaying it
+
+    //if you delete an instruction that starts the same as another instruction it will delete both
+    //TODO fix this 
     instructions = instructions.filter(el=>{
        return !el.startsWith(this.parentElement.childNodes[0].childNodes[0].innerText)
     })
@@ -182,9 +189,10 @@ async function createRecipe(){
     //     - check we have selected / uploaded a main image for meal
 
     //Object.keys(tempIngredients).length - measures length of objects inside object
-    if(!Object.keys(tempIngredients).length > 0 && !instructions.length > 0) return  //TODO -display error messages
+    if(!Object.keys(ingredients).length > 0 && !instructions.length > 0) return  //TODO -display error messages
 
     //format the ingredients object to be sent to the server
+    //TODO send the input as it is here and sort the data server side????
     let ingredientsOutput = []
     for(let item in ingredients){
         ingredientsOutput.push(`${ingredients[item].name},${ingredients[item].ammount},${ingredients[item].unit},${ingredients[item].image}`)
