@@ -47,6 +47,34 @@ module.exports = {
             console.error(err)
         }
     },
+    uploadMealImage: async (req,res)=>{
+        try {
+            if(!req.files){
+                res.send({
+                    status: false,
+                    message: 'No File Uploaded'
+                })
+            }
+            else {
+                let mainImage = req.files.mainImage
+                //place image in upload directory
+                mainImage.mv('./public/images/' + mainImage.name)
+                res.send({
+                    status: true,
+                    message: 'File Upload Success',
+                    data: {
+                        name: mainImage.name,
+                        mimeType: mainImage.mimetype,
+                        size: mainImage.size
+                    }
+                })
+
+            }
+        } 
+        catch (err){
+            res.status(500).send(err)
+        }
+    },
     addRecipe: (req,res)=>{
         res.render('addMeal.ejs', { images: res.locals.filenames})
     },

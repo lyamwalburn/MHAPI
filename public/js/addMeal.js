@@ -13,7 +13,7 @@ let instructions = []
 
 const submitButton = document.querySelector('#submitButton').addEventListener('click',createRecipe)
 
-fetch('http://localhost:3000/recipes/getImagePaths')
+fetch('/recipes/getImagePaths')
   .then(res => res.json())
   .then(data => imagesPaths = data)
 
@@ -93,10 +93,10 @@ itemName.onkeyup = (e)=> {
     }
 }
 
-//hide the suggest box if focus is moved
-itemName.addEventListener('focusout', ()=> {
-    suggestBox.classList.remove('active')
-})
+//hide the suggest box if focus is moved -- TODO fix as trying to click on a dropdown moves focus and thus closes it
+// itemName.addEventListener('focusout', ()=> {
+//     suggestBox.classList.remove('active')
+// })
 
 function showSuggestions(list){
     let listData
@@ -218,3 +218,31 @@ async function createRecipe(){
         console.log(err)
     }
 }
+
+//Image Upload-----------------------------------------------------------------------------------
+
+const mainImageForm = document.querySelector('#mainImageForm').addEventListener('submit', (e)=>{
+    e.preventDefault()
+    const fileInput = document.querySelector('#recipieImage')
+    uploadFile(fileInput.files[0])
+})
+
+//TODO -- ammend function to take route and name as params so can be used for ingredients as well
+//TODO -- sanatise uploads to just jpg png etc
+const uploadFile = (file) => {
+    const formData = new FormData()
+    formData.append('mainImage',file)
+    fetch('/recipes/upMealImage', {
+      method: 'POST',
+      body: formData //File to upload
+    }).then(
+      response => response.json() 
+    ).then(
+      success => console.log(success) // Handle the success response object
+      //display upload success on page TODO
+      //display preview on page TODO -- perhaps should be done on submit click
+    ).catch(
+      error => console.log(error) // Handle the error response object
+      //display error on page TODO
+    )
+  }

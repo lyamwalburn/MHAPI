@@ -6,6 +6,7 @@ const { getDirectoryContent} = require('../middleware/filenames')
 
 router.get('/',ensureAuth, recipieController.getRecipies)
 router.post('/createRecipe', recipieController.createRecipe)
+router.post('/upMealImage',recipieController.uploadMealImage)
 router.get('/addRecipe',recipieController.addRecipe)
 router.get('/getImagePaths',getDirectoryContent,recipieController.getImagePaths)
 router.get('/selectedMeals',recipieController.getSelectedMeals)

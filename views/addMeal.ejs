@@ -16,6 +16,12 @@
             <h1>Whats your signature dish?</h1>
             <p>add it to our recipies list to share with others</p>
         </header>
+        <form action="#" method="POST" enctype="multipart/form-data" id="mainImageForm">
+            <label for="image">Main Image</label>
+            <input type="file" name="mainImage" id="recipieImage">
+            <div class="message sucess">File Uploaded</div>
+            <button type="submit"></button>
+        </form>
         <div class="formContainer">
             <form action="/recipes/createRecipe" method="POST">
                 <div class="mealInfo">
@@ -28,8 +34,7 @@
                     <label for="cookingTime">Cooking Time</label>
                     <input type="text" name="cookingTime" id="cookingTime" required>
                 
-                    <label for="image">Image Link</label>
-                    <input type="text" name="image" id="recipieImage">
+                    
                 </div>
                 <h2>Ingredients</h2>
                 <div class="ingredientsContainer">

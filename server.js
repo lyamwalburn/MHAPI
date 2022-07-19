@@ -5,6 +5,8 @@ const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
 const connectDB = require('./config/database')
+const fileUpload = require('express-fileupload')
+
 const authRoutes = require('./routes/auth')
 const homeRoutes = require('./routes/home')
 const recipeRoutes = require('./routes/recipe')
@@ -34,6 +36,11 @@ app.use(
 // Passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
+
+//File upload
+app.use(fileUpload({
+  createParentPath: true
+}))
 
 //Routes
 app.use('/', homeRoutes)
