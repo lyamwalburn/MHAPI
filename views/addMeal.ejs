@@ -19,7 +19,20 @@
         <form action="#" method="POST" enctype="multipart/form-data" id="mainImageForm">
             <label for="image">Main Image</label>
             <input type="file" name="mainImage" id="recipieImage">
-            <div class="message sucess">File Uploaded</div>
+            <div class="message success">
+                <i class="fa-solid fa-check"></i>
+                <div class="textContainer">
+                    <span>Success</span>
+                    <span>File Uploaded</span>
+                </div>
+            </div>
+            <div class="message failure">
+                <i class="fa-solid fa-xmark"></i>
+                <div class="textContainer">
+                    <span>Error</span>
+                    <span>Upload Failed</span>
+                </div>
+            </div>
             <button type="submit"></button>
         </form>
         <div class="formContainer">
