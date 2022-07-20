@@ -21,6 +21,11 @@ form input {
     padding-bottom: 1rem;
 }
 
+
+input[type="file"]{
+   display: none;
+}
+
 form textarea {
     width: 80%;
     margin-bottom: 1rem;
@@ -216,6 +221,16 @@ form button {
     height: 85%;
 }
 
+#mainImageForm{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#mainImageForm button {
+    width: 80%;
+}
+
 .message{
     padding: .5rem;
     text-align: center;
@@ -225,10 +240,14 @@ form button {
     width: 20rem;
     margin-left: 4rem;
     border-radius: 5px;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: flex-start;
     margin-bottom: 1rem;
+}
+
+.message.active{
+    display: flex;
 }
 
 
@@ -277,4 +296,40 @@ form button {
 
 .failure i {
     color: rgb(239, 37, 54) ;
+}
+
+.photoUpload, .previewImage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #444f5a;
+    border-radius: 5px;
+    padding: 3rem;
+    font-size: 2rem;
+    color: #444f5a;
+    cursor: pointer;
+    width: 15%;
+    height: 11rem;
+    margin: 1rem 3rem;
+}
+
+.previewImage{
+    width: 15%;
+    height: 11rem;
+    background-position: center;
+    background-size: cover;
+    cursor: default;
+    border: 1px dashed #444f5a;
+}
+
+.photoUpload i {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+}
+
+.photoUpload > .fileName {
+    color: #444f5a;
+    opacity: 0;
+    margin-top: 1rem;
 }

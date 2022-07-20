@@ -17,8 +17,14 @@
             <p>add it to our recipies list to share with others</p>
         </header>
         <form action="#" method="POST" enctype="multipart/form-data" id="mainImageForm">
-            <label for="image">Main Image</label>
-            <input type="file" name="mainImage" id="recipieImage">
+            <label for="recipieImage" class="photoUpload">
+                <i class="fa-solid fa-camera"></i>
+                Pick Image
+                <input type="file" name="mainImage" id="recipieImage" accept=".jpg"/>
+                <span class="fileName">text</span>
+            </label>
+            <picture class="previewImage"> Preview
+            </picture>
             <div class="message success">
                 <i class="fa-solid fa-check"></i>
                 <div class="textContainer">
@@ -33,7 +39,7 @@
                     <span>Upload Failed</span>
                 </div>
             </div>
-            <button type="submit"></button>
+            <button type="submit" class="btn">Upload</button>
         </form>
         <div class="formContainer">
             <form action="/recipes/createRecipe" method="POST">

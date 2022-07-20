@@ -220,15 +220,38 @@ async function createRecipe(){
 }
 
 //Image Upload-----------------------------------------------------------------------------------
+const fileInput = document.querySelector('#recipieImage')
+fileInput.addEventListener('change', ()=> {
+    //removes any previous error success messages when sending to server should perhaps be onchange for the input instead
+    let messages = document.querySelectorAll('.message')
+    messages.forEach(message=>{
+        message.classList.remove('active')
+    })
+   
+    //change the span text to reflect the chosen file
+    const fileName = document.querySelector('.fileName')
+    fileName.textContent = fileInput.files[0].name
+    fileName.style.opacity = 1
+
+    //change the background of the preview area to show the image
+    const reader = new FileReader()
+    reader.addEventListener('load',()=>{
+        let uploadedImage = reader.result
+        const previewArea = document.querySelector('.previewImage').style.backgroundImage = `url(${uploadedImage})`
+    })
+    reader.readAsDataURL(fileInput.files[0])
+})
 
 const mainImageForm = document.querySelector('#mainImageForm').addEventListener('submit', (e)=>{
     e.preventDefault()
-    const fileInput = document.querySelector('#recipieImage')
     uploadFile(fileInput.files[0])
 })
 
+
+
 //TODO -- ammend function to take route and name as params so can be used for ingredients as well
 //TODO -- sanatise uploads to just jpg png etc
+//TODO -- add recapatcha to prevent spam uploads
 const uploadFile = (file) => {
     const formData = new FormData()
     formData.append('mainImage',file)
@@ -238,11 +261,23 @@ const uploadFile = (file) => {
     }).then(
       response => response.json() 
     ).then(
-      success => console.log(success) // Handle the success response object
-      //display upload success on page TODO
+      success => {
+        console.log(success) // Handle the success response object
+        //display upload success on page TODO
+        if(success.status){
+            const message = document.querySelector('.message.success')
+            message.classList.add('active')
+        }
+        else {
+            //display error on page TODO
+            const message = document.querySelector('.message.failure')
+            message.classList.add('active')
+        }        
+    }
       //display preview on page TODO -- perhaps should be done on submit click
     ).catch(
-      error => console.log(error) // Handle the error response object
-      //display error on page TODO
+      error => {
+        console.log(error) // Handle the error response object
+      }
     )
   }
