@@ -31,11 +31,6 @@ form textarea {
     margin-bottom: 1rem;
 }
 
-
-form label {
-    margin-bottom: 1rem;
-}
-
 form button {
     width: 50%;
     padding: 1rem;
@@ -116,6 +111,10 @@ form button {
     opacity: 0;
     pointer-events: none;
     display: none;
+    border: 1px solid #444f5a;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: none;
 }
 
 .autocomplete-box li, .ingredientsList li {
@@ -187,6 +186,7 @@ form button {
     max-height: 400px;
     overflow-y:auto;
     border-radius: 3px;
+    border: 1px dashed #444f5a
 }
 
 .instructionsList{
@@ -238,12 +238,11 @@ form button {
     background-color: #fff;
     color: #444f5a;
     width: 20rem;
-    margin-left: 4rem;
     border-radius: 5px;
     display: none;
     align-items: center;
     justify-content: flex-start;
-    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
 }
 
 .message.active{
@@ -309,13 +308,12 @@ form button {
     font-size: 2rem;
     color: #444f5a;
     cursor: pointer;
-    width: 15%;
+    width: 25%;
     height: 11rem;
-    margin: 1rem 3rem;
 }
 
 .previewImage{
-    width: 15%;
+    width: 25%;
     height: 11rem;
     background-position: center;
     background-size: cover;
@@ -332,4 +330,79 @@ form button {
     color: #444f5a;
     opacity: 0;
     margin-top: 1rem;
+}
+
+.multiPageForm{
+    background-color: #fff;
+    width: 75%;
+    height: 60rem;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.multiPageForm .tracker{
+    display: flex;
+    width: 100%;
+    background-color: #444f5a;
+    color:#efefef;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-bottom: 3rem;
+}
+
+.tracker .step {
+    padding: 2rem 4rem;
+    font-size: .75rem;
+}
+
+.tab{
+    display: none;
+    height: 100%;
+    width: 100%;
+}
+
+.tab.active{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tab .mealInfo{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+}
+
+.tab .mealInfo label{
+    width: 20%;
+    font-size: 1.5rem;
+    padding-left: 3rem;
+}
+.tab .mealInfo input{
+    width: 60%;
+    font-size: 1.5rem;
+}
+
+.tab .pictureInfo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 50%;
+    padding-top: 2.5rem;
+}
+
+.active button {
+    margin-right: 5rem;
+    margin-left: auto;
+    width: 20%;
+    height: 5rem;
+    margin-top: auto;
+    margin-bottom: 2rem;
 }

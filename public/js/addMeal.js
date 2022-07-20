@@ -205,7 +205,7 @@ async function createRecipe(){
                 "name": document.querySelector('#recipeName').value,
                 "style": document.querySelector('#recipeStyle').value,
                 "cookingTime": document.querySelector('#cookingTime').value,
-                "image": document.querySelector('#recipieImage').value,
+                "image": `/images/${fileInput.files[0].name}`, // needs to change to /images/filename from document.querySelector('#recipieImage').value
                 "ingredients": ingredientsOutput.join('\r\n'),  
                 "instructions": instructions.join('\r\n')
             })
@@ -240,12 +240,13 @@ fileInput.addEventListener('change', ()=> {
         const previewArea = document.querySelector('.previewImage').style.backgroundImage = `url(${uploadedImage})`
     })
     reader.readAsDataURL(fileInput.files[0])
-})
-
-const mainImageForm = document.querySelector('#mainImageForm').addEventListener('submit', (e)=>{
-    e.preventDefault()
     uploadFile(fileInput.files[0])
 })
+
+// const mainImageForm = document.querySelector('#mainImageForm').addEventListener('submit', (e)=>{
+//     e.preventDefault()
+//     uploadFile(fileInput.files[0])
+// })
 
 
 
@@ -281,3 +282,23 @@ const uploadFile = (file) => {
       }
     )
   }
+
+  let pageNumber = 0
+  const tabs = document.querySelectorAll('.tab')
+  const nextButtons = document.querySelectorAll('.next')
+  nextButtons.forEach(button=> {
+    button.addEventListener('click', ()=>{
+        if(pageNumber <2) pageNumber++
+        tabs.forEach(tab=>{
+            tab.classList.remove('active')
+        })
+        switch(pageNumber){
+            case 0: tabs[0].classList.add('active')
+            break
+            case 1: tabs[1].classList.add('active')
+            break
+            case 2: tabs[2].classList.add('active')
+            break
+        }
+      })
+  })
