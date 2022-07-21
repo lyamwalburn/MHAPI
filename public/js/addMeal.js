@@ -223,9 +223,9 @@ async function createRecipe(){
 const fileInput = document.querySelector('#recipieImage')
 fileInput.addEventListener('change', ()=> {
     //removes any previous error success messages when sending to server should perhaps be onchange for the input instead
-    let messages = document.querySelectorAll('.message')
+    let messages = fileInput.parentNode.parentNode.querySelectorAll('.message')
     messages.forEach(message=>{
-        message.classList.remove('active')
+        message.remove()
     })
    
     //change the span text to reflect the chosen file
@@ -259,13 +259,12 @@ const uploadFile = (file) => {
         console.log(success) // Handle the success response object
         //display upload success on page 
         if(success.status){
-            const message = document.querySelector('.message.success')
-            message.classList.add('active')
+            //create a success message and append it to the dom
+            fileInput.parentNode.parentNode.appendChild(createMessage(MESSAGETYPE.SUCCESS,'Image uploaded successfully'))
         }
         else {
             //display error on page 
-            const message = document.querySelector('.message.failure')
-            message.classList.add('active')
+            fileInput.parentNode.parentNode.appendChild(createMessage(MESSAGETYPE.ERROR,'Image uploaded failed'))
         }        
     }
       //display preview on page TODO -- perhaps should be done on submit click
@@ -285,6 +284,14 @@ const uploadFile = (file) => {
   const trackerSteps = document.querySelectorAll('.step')
   nextButtons.forEach(button=> {
     button.addEventListener('click', ()=>{
+        //check required fields
+        switch(pageNumber){
+            case 0: if(!validatePageOne()) return
+            break
+            case 1:
+            break
+            case 2:
+        }
         if(pageNumber <2) pageNumber++
         setActiveTab()
       })
@@ -314,4 +321,93 @@ function setActiveTab(){
                     trackerSteps[2].classList.add('active')
             break
         }
+}
+
+
+//Form Validation--------------------------------------------------------------------------------------------
+function validatePageOne(){
+    const recipeName = document.querySelector('#recipeName')
+    recipeName.addEventListener('keyup', ()=>{
+        removeChildMessages(recipeName.parentNode)
+    })
+    if(recipeName.value.length < 1) {
+        if(recipeName.parentNode.childElementCount <3) {
+            recipeName.parentNode.appendChild(createMessage(MESSAGETYPE.REQUIRED,'recipie must have a title'))
+        }
+        recipeName.focus()
+        return false
+    }
+    const style = document.querySelector('#recipeStyle')
+    style.addEventListener('keyup', ()=>{
+        removeChildMessages(style.parentNode)
+    })
+    if(style.value.length < 1) {
+        if(style.parentNode.childElementCount <3) {
+            style.parentNode.appendChild(createMessage(MESSAGETYPE.REQUIRED,'enter a cuisine style'))
+        }
+        style.focus()
+        return false
+    }
+    const time = document.querySelector('#cookingTime')
+    time.addEventListener('keyup', ()=>{
+        removeChildMessages(time.parentNode)
+    })
+    if(time.value < 1) {
+        if(time.parentNode.childElementCount <3) {
+            time.parentNode.appendChild(createMessage(MESSAGETYPE.REQUIRED,'enter cooking duration'))
+        }
+        time.focus()
+        return false
+    }
+    if(!fileInput.files[0]){
+        if(fileInput.parentNode.parentNode.childElementCount <3) {
+            fileInput.parentNode.parentNode.appendChild(createMessage(MESSAGETYPE.REQUIRED,'upload a meal image'))
+        }
+        //TODO - add blue border around input area to draw attention
+        return false
+    }
+    return true
+}
+
+
+
+//Messaging -- Success, Error, Required ---------------------------------------
+
+const MESSAGETYPE = {
+    SUCCESS: 'success',
+    ERROR: 'error',
+    REQUIRED: 'required'
+}
+//create a message element with custom message
+
+const createMessage = (type, messageText)=>{
+    const message = document.createElement('div')
+    message.classList.add('message', `${type}`, 'active') //aslo add type class required success failure
+    const icon = document.createElement('i')
+    switch (type) {
+        case MESSAGETYPE.ERROR : icon.classList.add('fa-solid','fa-xmark')
+        break
+        case MESSAGETYPE.SUCCESS : icon.classList.add('fa-solid','fa-check')
+        break
+        case MESSAGETYPE.REQUIRED : icon.classList.add('fa-solid','fa-exclamation')
+        break
+    }
+    const textContainer = document.createElement('div')
+    const headerText = document.createElement('span')
+    headerText.textContent = type
+    const messageInfo = document.createElement('span')
+    messageInfo.textContent = messageText
+    textContainer.classList.add('textContainer')
+    textContainer.appendChild(headerText)
+    textContainer.appendChild(messageInfo)
+    message.appendChild(icon)
+    message.appendChild(textContainer)
+    return message
+}
+
+const removeChildMessages = (node) => {
+    let messages = node.querySelectorAll('.message')
+        messages.forEach(message=>{
+            message.remove()
+        })
 }
