@@ -243,13 +243,6 @@ fileInput.addEventListener('change', ()=> {
     uploadFile(fileInput.files[0])
 })
 
-// const mainImageForm = document.querySelector('#mainImageForm').addEventListener('submit', (e)=>{
-//     e.preventDefault()
-//     uploadFile(fileInput.files[0])
-// })
-
-
-
 //TODO -- ammend function to take route and name as params so can be used for ingredients as well
 //TODO -- sanatise uploads to just jpg png etc
 //TODO -- add recapatcha to prevent spam uploads
@@ -264,13 +257,13 @@ const uploadFile = (file) => {
     ).then(
       success => {
         console.log(success) // Handle the success response object
-        //display upload success on page TODO
+        //display upload success on page 
         if(success.status){
             const message = document.querySelector('.message.success')
             message.classList.add('active')
         }
         else {
-            //display error on page TODO
+            //display error on page 
             const message = document.querySelector('.message.failure')
             message.classList.add('active')
         }        
@@ -283,22 +276,42 @@ const uploadFile = (file) => {
     )
   }
 
+
+  //Multipage form next back button control
   let pageNumber = 0
   const tabs = document.querySelectorAll('.tab')
   const nextButtons = document.querySelectorAll('.next')
+  const backButtons = document.querySelectorAll('.back')
+  const trackerSteps = document.querySelectorAll('.step')
   nextButtons.forEach(button=> {
     button.addEventListener('click', ()=>{
         if(pageNumber <2) pageNumber++
-        tabs.forEach(tab=>{
-            tab.classList.remove('active')
-        })
-        switch(pageNumber){
-            case 0: tabs[0].classList.add('active')
-            break
-            case 1: tabs[1].classList.add('active')
-            break
-            case 2: tabs[2].classList.add('active')
-            break
-        }
+        setActiveTab()
       })
   })
+  backButtons.forEach(button=> {
+    button.addEventListener('click', ()=>{
+        if(pageNumber >0) pageNumber--
+        setActiveTab()
+    })
+    })
+
+function setActiveTab(){
+    tabs.forEach(tab=>{
+            tab.classList.remove('active')
+    })
+    trackerSteps.forEach(step=>{
+        step.classList.remove('active')
+    })
+        switch(pageNumber){
+            case 0: tabs[0].classList.add('active') 
+                    trackerSteps[0].classList.add('active')
+            break
+            case 1: tabs[1].classList.add('active')
+                    trackerSteps[1].classList.add('active')
+            break
+            case 2: tabs[2].classList.add('active')
+                    trackerSteps[2].classList.add('active')
+            break
+        }
+}

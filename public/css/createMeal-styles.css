@@ -310,6 +310,7 @@ form button {
     cursor: pointer;
     width: 25%;
     height: 11rem;
+    overflow:scroll;
 }
 
 .previewImage{
@@ -343,6 +344,7 @@ form button {
     justify-content: start;
     align-items: center;
     border-radius: 5px;
+    box-shadow: var(--shadow);
 }
 
 .multiPageForm .tracker{
@@ -360,6 +362,39 @@ form button {
 .tracker .step {
     padding: 2rem 4rem;
     font-size: .75rem;
+}
+
+.tracker .step.active{
+    font-size: 1rem;
+}
+
+.step.active h2 {
+    position: relative;
+}
+
+.step.active h2::before{
+    content: "";
+    height: .5rem;
+    width: 120%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -1rem;
+    background-color: var(--buttonHover);
+    border-radius: 3px;
+    animation: grow .25s linear;
+}
+
+@keyframes grow {
+    0%{
+        width: 0%;
+    }
+    80%{
+        width: 140%;
+    }
+    100%{
+        width: 120%;
+    }
 }
 
 .tab{
@@ -399,10 +434,21 @@ form button {
 }
 
 .active button {
-    margin-right: 5rem;
     margin-left: auto;
     width: 20%;
     height: 5rem;
     margin-top: auto;
     margin-bottom: 2rem;
+}
+
+.active .back{
+   margin-left: 5rem;
+}
+
+.active .next, #submitButton{
+    margin-right: 5rem;
+}
+
+.addIngredientButton{
+    margin-right: 3rem;
 }
