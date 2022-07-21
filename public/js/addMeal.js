@@ -40,6 +40,7 @@ function addIngredient(){
     itemName.value = ""
     itemAmmount.value = ""
     itemUnit.value = ""
+    removeChildMessages(itemName.parentNode.parentNode)
     itemName.focus()
 }
 
@@ -184,12 +185,7 @@ function deleteInstruction(){
 
 async function createRecipe(){
 
-    //TODO - check we have at least 1 ingredient
-    //     - check we have at least 1 instruction
-    //     - check we have selected / uploaded a main image for meal
-
-    //Object.keys(tempIngredients).length - measures length of objects inside object
-    if(!Object.keys(ingredients).length > 0 && !instructions.length > 0) return  //TODO -display error messages
+    if(!validatePageThree()) return 
 
     //format the ingredients object to be sent to the server
     //TODO send the input as it is here and sort the data server side????
@@ -205,7 +201,7 @@ async function createRecipe(){
                 "name": document.querySelector('#recipeName').value,
                 "style": document.querySelector('#recipeStyle').value,
                 "cookingTime": document.querySelector('#cookingTime').value,
-                "image": `/images/${fileInput.files[0].name}`, // needs to change to /images/filename from document.querySelector('#recipieImage').value
+                "image": `/images/${fileInput.files[0].name}`, 
                 "ingredients": ingredientsOutput.join('\r\n'),  
                 "instructions": instructions.join('\r\n')
             })
@@ -260,6 +256,7 @@ const uploadFile = (file) => {
         //display upload success on page 
         if(success.status){
             //create a success message and append it to the dom
+            fileInput.parentNode.classList.remove('focus')
             fileInput.parentNode.parentNode.appendChild(createMessage(MESSAGETYPE.SUCCESS,'Image uploaded successfully'))
         }
         else {
@@ -288,9 +285,9 @@ const uploadFile = (file) => {
         switch(pageNumber){
             case 0: if(!validatePageOne()) return
             break
-            case 1:
+            case 1: if(!validatePageTwo()) return
             break
-            case 2:
+            case 2: //if(!validatePageThree()) return -- final page validation is done in createRecipe()
         }
         if(pageNumber <2) pageNumber++
         setActiveTab()
@@ -364,12 +361,36 @@ function validatePageOne(){
             fileInput.parentNode.parentNode.appendChild(createMessage(MESSAGETYPE.REQUIRED,'upload a meal image'))
         }
         //TODO - add blue border around input area to draw attention
+        fileInput.parentNode.classList.add('focus')
         return false
     }
     return true
 }
 
+function validatePageTwo(){
+    if(!Object.keys(ingredients).length > 0){
+        const container = document.querySelector('.left')
+        if(container.childElementCount <5) {
+            container.appendChild(createMessage(MESSAGETYPE.REQUIRED,'enter at least one ingredient'))
+        }
+        itemName.focus()
+        return false
+    }
+    return true
+}
 
+function validatePageThree(){
+    if(!instructions.length > 0){
+        const container = instructionInput.parentNode
+        console.log(container.lastChild)
+        if(container.childElementCount <3) {
+            container.insertBefore(createMessage(MESSAGETYPE.REQUIRED,'please enter instructions'),container.lastChild)
+        }
+        instructionInput.focus()
+        return false
+    }
+    return true
+}
 
 //Messaging -- Success, Error, Required ---------------------------------------
 

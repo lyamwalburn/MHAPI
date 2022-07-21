@@ -68,6 +68,8 @@ form button {
 }
 
 
+
+
 .ingredientsContainer input {
     margin-bottom: 1rem;
     width: 45%;
@@ -170,6 +172,7 @@ form button {
     width: 95%;
     position: absolute;
     top: 5.5rem;
+    z-index: 5;
 }
 
 .ingredientsList, .instructionsList{
@@ -218,7 +221,7 @@ form button {
 
 .instructionsContainer textarea {
     width: 100%;
-    height: 85%;
+    height: 75%;
 }
 
 #mainImageForm{
@@ -320,6 +323,10 @@ form button {
     width: 25%;
     height: 11rem;
     overflow:scroll;
+}
+
+.photoUpload.focus {
+    border: 2px solid blue;
 }
 
 .previewImage{
