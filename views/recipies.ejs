@@ -16,6 +16,15 @@
             <h1>Hi <%= username %>, Choose some meals</h1>
             <p>Choose from our range of scrupmtious meals for inspirational meal ideas!</p>
         </header>
+        <% if (messages.length > 0) { %>
+            <div class="message success active">
+                <i class="fa-solid fa-check"></i>
+                <div class="textContainer">
+                    <span>Success</span>
+                    <span><%= messages %></span>
+                </div>
+            </div>
+        <% } %>
         <div class="meals-wrapper">
             <% for(let i =0; i< recipies.length;i++) { %>
                 <div class="meal-container">

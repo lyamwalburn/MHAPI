@@ -6,6 +6,8 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')
 const connectDB = require('./config/database')
 const fileUpload = require('express-fileupload')
+const flash = require('connect-flash')
+const cookieParser = require('cookie-parser')
 
 const authRoutes = require('./routes/auth')
 const homeRoutes = require('./routes/home')
@@ -22,6 +24,7 @@ app.set('views','./views')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(cookieParser())
 
 // Sessions
 app.use(
@@ -32,6 +35,7 @@ app.use(
       store: MongoStore.create({mongoUrl: process.env.DB_STRING}),
     })
   )
+app.use(flash())
 
 // Passport middleware
 app.use(passport.initialize())

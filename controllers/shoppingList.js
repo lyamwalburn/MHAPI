@@ -49,7 +49,7 @@ module.exports = {
             }
             //Add the recipie id to the user so we can keep track of what meals they are having
             await User.updateOne( {_id: req.user._id},{ $push: {currentMeals: req.params.id}})
-          
+            req.flash('info',`${recipeData[0].recipeName} added successfully`)
             res.redirect('/recipes')
            
         } catch (err) {

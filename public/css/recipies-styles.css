@@ -120,3 +120,35 @@ h1 {
  cursor: pointer;
 }
 
+.wrapper{
+  position: relative;
+}
+
+.message{
+  position: absolute;
+  top: 10rem;
+  right: 5rem;
+  opacity: 0;
+  animation: fallDown .5s linear forwards, fadeOut 7s linear;
+}
+
+@keyframes fallDown {
+  0%{
+    transform: translateY(-10rem);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  0%{
+    opacity: 100%;
+  }
+  80%{
+    opacity: 80%;
+  }
+  100%{
+    opacity: 0;
+  }
+}

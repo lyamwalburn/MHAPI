@@ -8,7 +8,7 @@ module.exports = {
     getRecipies: async (req,res) => {
         try {
             const allRecipies = await Recipe.find()
-            res.render('recipies.ejs', { recipies : allRecipies, username: req.user.displayName})
+            res.render('recipies.ejs', { recipies : allRecipies, username: req.user.displayName, messages : req.flash('info')})
         } catch (err) {
             console.error(err)
         }
@@ -42,6 +42,7 @@ module.exports = {
                 image: req.body.image,
                 instructions: steps,
             })
+            req.flash('info',`${req.body.name} succesfully added`)
             res.redirect('/recipes')
         } catch (err) {
             console.error(err)
