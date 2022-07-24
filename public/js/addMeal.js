@@ -202,7 +202,7 @@ async function createRecipe(){
                 "name": document.querySelector('#recipeName').value,
                 "style": document.querySelector('#recipeStyle').value,
                 "cookingTime": document.querySelector('#cookingTime').value,
-                "description": 'PLACEHOLDER DESCRIPTION', //TODO pull from form input
+                "description": document.querySelector('#description').value, 
                 "image": `/images/${fileInput.files[0].name}`, 
                 "ingredients": ingredientsOutput.join('\r\n'),  
                 "instructions": instructions.join('\r\n')
@@ -346,6 +346,17 @@ function validatePageOne(){
             time.parentNode.appendChild(createMessage(MESSAGETYPE.REQUIRED,'enter cooking duration'))
         }
         time.focus()
+        return false
+    }
+    const description = document.querySelector('#description')
+    description.addEventListener('keyup', ()=>{
+        removeChildMessages(description.parentNode)
+    })
+    if(description.value.length < 1) {
+        if(description.parentNode.childElementCount <3) {
+            description.parentNode.appendChild(createMessage(MESSAGETYPE.REQUIRED,'recipie must have a description'))
+        }
+        description.focus()
         return false
     }
     if(!fileInput.files[0]){
