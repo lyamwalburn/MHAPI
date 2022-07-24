@@ -7,7 +7,18 @@ const User = require('../models/User')
 module.exports = {
     getRecipies: async (req,res) => {
         try {
-            const allRecipies = await Recipe.find()
+            let allRecipies = await Recipe.find()
+            const user = await User.find({_id: req.user._id})
+            const userMeals = await Recipe.find( {_id : {$in: user[0].currentMeals}})
+            //mark any meals that the user has in their selected meals
+            allRecipies.forEach(meal => {
+                userMeals.forEach(userMeal =>{
+
+                    if(meal._id.toString() === userMeal._id.toString()){
+                        meal.inBasket = true
+                    }
+                })
+            })
             res.render('recipies.ejs', { recipies : allRecipies, username: req.user.displayName, messages : req.flash('info')})
         } catch (err) {
             console.error(err)

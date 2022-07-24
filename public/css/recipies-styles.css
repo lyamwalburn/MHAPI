@@ -29,6 +29,7 @@ h1 {
 
 /* Meal Container */
 .meal-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   background: var(--primary);
@@ -36,6 +37,31 @@ h1 {
   border-radius: 3px;
   max-width: 250px;
   margin: 1rem;
+}
+
+.meal-container i.fa-basket-shopping {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 5;
+  color: var(--primary);
+  font-size: 2rem;
+}
+
+.meal-container.inBasket::before{
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 8rem 8rem 0;
+  border-color: transparent var(--buttonPrimary) transparent transparent;
+  border-top-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+  color: #fff;
 }
 
 .meal-container picture {

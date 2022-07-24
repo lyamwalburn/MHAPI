@@ -27,7 +27,12 @@
         <% } %>
         <div class="meals-wrapper">
             <% for(let i =0; i< recipies.length;i++) { %>
-                <div class="meal-container">
+                <% if (recipies[i].inBasket) { %>
+                <div class="meal-container inBasket">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                    <% } else { %>
+                        <div class="meal-container">
+                    <% } %>
                     <picture data-time="<%= recipies[i].cookingTime%>">
                         <img aria-hidden="true" loading="lazy" decoding="async" src="<%= recipies[i].image %>" alt="meal picture" width="250" height="250">
                     </picture>
