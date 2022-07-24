@@ -206,10 +206,8 @@ async function createRecipe(){
                 "instructions": instructions.join('\r\n')
             })
         })
-        .then(data => {
-            //redirect back to recipies page with success message - TODO
-            window.location.replace(data.url)
-        })
+        const data = await response.json()
+        window.location.replace(data.url)
     }catch(err){
         console.log(err)
     }
@@ -242,17 +240,15 @@ fileInput.addEventListener('change', ()=> {
 //TODO -- ammend function to take route and name as params so can be used for ingredients as well
 //TODO -- sanatise uploads to just jpg png etc
 //TODO -- add recapatcha to prevent spam uploads
-const uploadFile = (file) => {
+const uploadFile = async (file) => {
     const formData = new FormData()
     formData.append('mainImage',file)
-    fetch('/recipes/upMealImage', {
+    const response = await fetch('/recipes/upMealImage', {
       method: 'POST',
       body: formData //File to upload
-    }).then(
-      response => response.json() 
-    ).then(
-      success => {
-        console.log(success) // Handle the success response object
+    })
+    const success = await response.json()
+    console.log(success) // Handle the success response object
         //display upload success on page 
         if(success.status){
             //create a success message and append it to the dom
@@ -263,13 +259,7 @@ const uploadFile = (file) => {
             //display error on page 
             fileInput.parentNode.parentNode.appendChild(createMessage(MESSAGETYPE.ERROR,'Image uploaded failed'))
         }        
-    }
-      //display preview on page TODO -- perhaps should be done on submit click
-    ).catch(
-      error => {
-        console.log(error) // Handle the error response object
-      }
-    )
+   
   }
 
 

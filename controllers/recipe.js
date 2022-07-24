@@ -43,7 +43,7 @@ module.exports = {
                 instructions: steps,
             })
             req.flash('info',`${req.body.name} succesfully added`)
-            res.redirect('/recipes')
+            res.json({url :'/recipes'})
         } catch (err) {
             console.error(err)
         }
