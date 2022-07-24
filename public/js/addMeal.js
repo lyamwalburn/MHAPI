@@ -13,6 +13,7 @@ let instructions = []
 
 const submitButton = document.querySelector('#submitButton').addEventListener('click',createRecipe)
 
+//should move this to an async await function call and clean up the .then() calls ---- TODO
 fetch('/recipes/getImagePaths')
   .then(res => res.json())
   .then(data => imagesPaths = data)
@@ -201,6 +202,7 @@ async function createRecipe(){
                 "name": document.querySelector('#recipeName').value,
                 "style": document.querySelector('#recipeStyle').value,
                 "cookingTime": document.querySelector('#cookingTime').value,
+                "description": 'PLACEHOLDER DESCRIPTION', //TODO pull from form input
                 "image": `/images/${fileInput.files[0].name}`, 
                 "ingredients": ingredientsOutput.join('\r\n'),  
                 "instructions": instructions.join('\r\n')

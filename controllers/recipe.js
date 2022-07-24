@@ -37,6 +37,7 @@ module.exports = {
                 recipeName: req.body.name, 
                 cookingTime: req.body.cookingTime,
                 cuisineStyle: req.body.style,
+                description: req.body.description,
                 classification: 'Chicken',
                 ingredients: mealIngredients,
                 image: req.body.image,

@@ -21,7 +21,7 @@
             </picture>
             <div class="right">
                 <h2><%= mealData.recipeName %></h2>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero, dolorem? Rerum ad sed aut praesentium totam quam quas, velit ab id, doloribus animi labore laborum repellat officia unde corporis quaerat, consequuntur quidem consectetur. Assumenda, sint nisi. Eum sint illo porro.</p>
+                <p><%= mealData.description %></p>
                 <span><i class="fa-solid fa-earth-americas"></i><%= mealData.cuisineStyle %></span>
                 <span><i class="fa-solid fa-hourglass"></i><%= mealData.cookingTime %> minutes</span>
                 <form action="/shoppingList/addMeal/<%=mealData._id %>" method="POST">
