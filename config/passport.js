@@ -21,7 +21,7 @@ module.exports = async function (passport) {
                     return done(err)
                 //check to see if theres already a user with that email
                 if(user){
-                    return done(null,false)
+                    return done(null,false,req.flash('signupMessage','That email is taken.'))
                 } else {
                     //if there is no user with that email create the user
                     let newUser = new User()
@@ -50,9 +50,9 @@ module.exports = async function (passport) {
           if(err)
               return done(err)
           if(!user)
-              return done(null,false)
+              return done(null,false,req.flash('loginMessage','User not found.'))
           if(!user.validPassword(password))
-              return done(null,false)
+              return done(null,false,req.flash('loginMessage','Invalid password.'))
 
           return done(null,user)
       })
