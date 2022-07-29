@@ -13,8 +13,13 @@
     <div class="wrapper">
         <%- include('./partials/nav.ejs') %>
         <header>
+            <% if(recipies.length > 0) { %>
             <h1><%= username %> here's what you've chosen this week</h1>
             <p>Pick todays meal and get yourself cooking!</p>
+            <% } else { %>
+            <h1>You haven't picked any meals yet <%= username %></h1>
+            <p>Browse our tongue teasing options</p>
+            <% } %>
         </header>
         <% if (messages.length > 0) { %>
             <div class="message success active">
@@ -26,6 +31,13 @@
             </div>
         <% } %>
             <div class="meals-wrapper">
+                <% if(recipies.length < 1) { %>
+                    <div class="redirect-container">
+                        <i class="fa-solid fa-book-open"></i>
+                        <p>What can we tempt you with tonight? Browse our collection of recipies from around the world and ease that craving.</p>
+                        <a href="/recipes" class="btn large">All Recipies</a>
+                    </div>
+                <% } %>
                 <% for(let i =0; i< recipies.length;i++) { %>
                     <div class="meal-container">
                         <picture data-time="<%= recipies[i].cookingTime%>">

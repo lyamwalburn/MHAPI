@@ -164,3 +164,29 @@ h1 {
     opacity: 0;
   }
 }
+
+.redirect-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem auto 0 auto;
+}
+
+.redirect-container i {
+  font-size: 5rem;
+  color: var(--darkFont);
+  margin-bottom: 1rem;
+}
+
+.redirect-container p {
+  font-size: 1.5rem;
+  width: 50%;
+  text-align: center;
+  color: var(--darkFont);
+  margin-bottom: 1.5rem;
+}
+
+.redirect-container .btn.large{
+  font-size: 2.5rem;
+}
