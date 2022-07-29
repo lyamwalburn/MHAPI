@@ -9,13 +9,14 @@ Array.from(deleteButton).forEach((el)=>{
 
 async function deleteItem(){
     const itemId = this.dataset.id
-    console.log(this.dataset.id);
+    const name = this.dataset.name
     try{
         const response = await fetch('/recipes/selectedMeals/deleteMeal', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'itemIdFromJSFile': itemId
+                'itemIdFromJSFile': itemId,
+                'mealName': name
             })
         })
         const data = await response.json()

@@ -16,6 +16,15 @@
             <h1><%= username %> here's what you've chosen this week</h1>
             <p>Pick todays meal and get yourself cooking!</p>
         </header>
+        <% if (messages.length > 0) { %>
+            <div class="message success active">
+                <i class="fa-solid fa-check"></i>
+                <div class="textContainer">
+                    <span>Success</span>
+                    <span><%= messages %></span>
+                </div>
+            </div>
+        <% } %>
             <div class="meals-wrapper">
                 <% for(let i =0; i< recipies.length;i++) { %>
                     <div class="meal-container">
@@ -27,7 +36,7 @@
                             <h2><%= recipies[i].recipeName %></h2>
                             <form action="/shoppingList/addMeal/<%=recipies[i]._id %>" method="POST">
                                 <a href='/recipes/mealInfo/<%= recipies[i]._id %>' class="btn"><i class="fa-solid fa-utensils"></i></i> Get Cooking</a>
-                                <a href='#' data-id="<%= recipies[i]._id %>" class="btn del"><i class="fa-solid fa-trash-can"></i>Eaten</a>
+                                <a href='#' data-id="<%= recipies[i]._id %>" data-name="<%= recipies[i].recipeName %>" class="btn del"><i class="fa-solid fa-trash-can"></i>Eaten</a>
                             </form>
                         </div>
                     </div>       

@@ -41,14 +41,17 @@
                         <h2><%= recipies[i].recipeName %></h2>
                         <form action="/shoppingList/addMeal/<%=recipies[i]._id %>" method="POST">
                             <a href='/recipes/mealInfo/<%= recipies[i]._id %>' class="btn"><i class="fa-solid fa-circle-info"></i> More Information</a>
+                            <% if (recipies[i].inBasket) { %>
+                                <a href='#' data-id="<%= recipies[i]._id %>" data-name="<%= recipies[i].recipeName %>" class="btn del"><i class="fa-solid fa-trash-can"></i>Remove</a>
+                            <% } else { %>
                             <button href="submit" class="btn"><i class="fa-solid fa-circle-plus"></i> Add</button>
+                            <% } %>
                         </form>
                     </div>
                 </div>
             <% } %>
         </div>
     </div>
-
-  
+    <script src="/js/selectedMeals.js" defer></script>
 </body>
 </html>

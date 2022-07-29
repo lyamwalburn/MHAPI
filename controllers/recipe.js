@@ -104,7 +104,7 @@ module.exports = {
             //Currently ignore's if you have chosen same meal twice despite id being in twice on mongo TODO - fix
             const user = await User.find({_id: req.user._id})
             const userMeals = await Recipe.find( {_id : {$in: user[0].currentMeals}})
-            res.render('selectedMeals.ejs', {recipies: userMeals, username: req.user.displayName})
+            res.render('selectedMeals.ejs', {recipies: userMeals, username: req.user.displayName, messages : req.flash('info')})
         } catch (err) {
             console.error(err)
         }
@@ -113,7 +113,9 @@ module.exports = {
     },
     deleteMeal: async (req,res)=>{
         try{
+            console.log(req.body.mealName)
             await User.findOneAndUpdate({_id: req.user._id}, {$pull : {currentMeals: req.body.itemIdFromJSFile}})
+            req.flash('info',`${req.body.mealName} removed from selected meals`)
             res.json('Deleted it')
         } catch(err){
             console.error(err)
