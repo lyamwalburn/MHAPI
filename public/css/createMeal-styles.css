@@ -326,18 +326,6 @@ form button {
     animation: grow .25s linear;
 }
 
-@keyframes grow {
-    0%{
-        width: 0%;
-    }
-    80%{
-        width: 140%;
-    }
-    100%{
-        width: 120%;
-    }
-}
-
 .tab{
     display: none;
     height: 100%;

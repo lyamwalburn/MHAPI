@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <%- include('./partials/nav.ejs') %>
+        <%- include('./partials/nav.ejs',{activePage: 3}) %>
         <header>
             <% if(recipies.length > 0) { %>
             <h1><%= username %> here's what you've chosen this week</h1>

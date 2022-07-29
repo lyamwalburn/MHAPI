@@ -57,6 +57,7 @@ header p {
 
 .main-nav li {
   height: 100%;
+  position: relative;
 }
 
 .main-nav a {
@@ -71,6 +72,22 @@ header p {
   text-transform: uppercase;
   font-size: 1.1rem;
   height: 100%;
+}
+
+.main-nav li.active a{
+  font-weight: 600;
+}
+
+.main-nav li.active::before{
+  content: "";
+  height: .5rem;
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1.5rem;
+  background-color: var(--buttonHover);
+  border-radius: 3px;
 }
 
 .main-nav i {
@@ -198,4 +215,16 @@ header p {
 
 .redirect-container .btn.large{
   font-size: 2.5rem;
+}
+
+@keyframes grow {
+  0%{
+      width: 0%;
+  }
+  80%{
+      width: 140%;
+  }
+  100%{
+      width: 120%;
+  }
 }
