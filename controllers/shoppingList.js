@@ -1,14 +1,16 @@
 const res = require('express/lib/response')
 const ShoppingList = require('../models/ShoppingList')
-const Recipie = require('../models/Recipe')
+const Recipe = require('../models/Recipe')
 const User = require('../models/User')
 
 module.exports = {
 
     getShoppingList: async(req,res)=>{
         try {
-            let listItems = await ShoppingList.find({ userId: req.user._id})   
-            res.render('shoppingList.ejs', {items : listItems, username : req.user.displayName})
+            let listItems = await ShoppingList.find({ userId: req.user._id})
+            const user = await User.find({_id: req.user._id})
+            const userMeals = await Recipe.find( {_id : {$in: user[0].currentMeals}})
+            res.render('shoppingList.ejs', {items : listItems, username : req.user.displayName, hasMeals: userMeals.length > 0 ? true : false})
         } catch (err) {
             console.error(err)
         }
@@ -36,7 +38,7 @@ module.exports = {
     addMeal: async (req,res)=>{
         try {
             //Add the chosen meal's ingredients to our shopping list
-            let recipeData = await Recipie.find({_id: req.params.id}).lean()
+            let recipeData = await Recipe.find({_id: req.params.id}).lean()
            for(let i =0;i<recipeData[0].ingredients.length;i++){
                //if this ingredient is already in the list just update it's ammount
                 await ShoppingList.updateOne({  ingredient : recipeData[0].ingredients[i].item,
@@ -47,7 +49,7 @@ module.exports = {
                                              },{ $inc:{ammount: recipeData[0].ingredients[i].ammount} },{ upsert: true}
                                             )
             }
-            //Add the recipie id to the user so we can keep track of what meals they are having
+            //Add the Recipe id to the user so we can keep track of what meals they are having
             await User.updateOne( {_id: req.user._id},{ $push: {currentMeals: req.params.id}})
             req.flash('info',`${recipeData[0].recipeName} added successfully`)
             res.redirect('/recipes')

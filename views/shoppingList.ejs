@@ -16,6 +16,20 @@
             <h1><%= username %>'s Shopping List</h1>
             <p>Once the shopping's done the yummyiness begins!</p>
         </header>
+        <% if(hasMeals && items.length < 1) { %>
+        <!-- User has picked meals and has no remaining shopping items -->
+            <div class="redirect-container">
+                <i class="fa-solid fa-fire-burner"></i>
+                <p>Looks like the shopping is all done, lets get cooking!</p>
+                <a href="/recipes/selectedMeals" class="btn large">My Meals</a>
+            </div>
+        <% } else if(!hasMeals && items.length < 1) { %>
+            <div class="redirect-container">
+                <i class="fa-solid fa-book-open"></i>
+                <p>You'll need to pick some meals before hitting the shops! Browse our scrumptious recipies now.</p>
+                <a href="/recipes" class="btn large">All Recipies</a>
+            </div>
+        <% } %>
         <div class="list-container">
             <ul>
                 <% for(let i =0; i< items.length;i++) { %>
@@ -34,7 +48,9 @@
                 </li>
                 <% } %>
             </ul>
-            <button class="del-all btn"><i class="fa-solid fa-dumpster"></i>Delete All List Items</button>
+            <% if(items.length >0) { %>
+                <button class="del-all btn"><i class="fa-solid fa-dumpster"></i>Delete All List Items</button>
+            <% } %>
         </div>
     </div>
     <script src="/main.js"></script>
