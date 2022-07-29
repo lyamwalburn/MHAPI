@@ -12,7 +12,17 @@
 <body>
     <div class="wrapper">
         <%- include('./partials/nav.ejs') %>
+        <% if (messages.length > 0) { %>
+            <div class="message success active">
+                <i class="fa-solid fa-check"></i>
+                <div class="textContainer">
+                    <span>Success</span>
+                    <span><%= messages %></span>
+                </div>
+            </div>
+        <% } %>
         <div class="info-wrapper">
+            
         <div class="meal-info">
             <picture class="left">
                 <source media="(min-width: 600px)" srcset="">
@@ -22,10 +32,16 @@
             <div class="right">
                 <h2><%= mealData.recipeName %></h2>
                 <p><%= mealData.description %></p>
-                <span><i class="fa-solid fa-earth-americas"></i><%= mealData.cuisineStyle %></span>
-                <span><i class="fa-solid fa-hourglass"></i><%= mealData.cookingTime %> minutes</span>
+                <div class="container">
+                    <span><i class="fa-solid fa-earth-americas"></i><%= mealData.cuisineStyle %></span>
+                    <span><i class="fa-solid fa-hourglass"></i><%= mealData.cookingTime %> minutes</span>
+                </div>
                 <form action="/shoppingList/addMeal/<%=mealData._id %>" method="POST">
-                    <button href="submit" class="btn"><i class="fa-solid fa-circle-plus"></i>Add to Meals</button>
+                    <% if(mealData.inBasket) { %>
+                        <a href='#' data-id="<%= mealData._id %>" data-name="<%= mealData.recipeName %>" class="btn del"><i class="fa-solid fa-trash-can"></i>Remove</a>
+                    <% } else { %>
+                        <button href="submit" class="btn"><i class="fa-solid fa-circle-plus"></i>Add to Meals</button>
+                    <% } %>
                 </form>
             </div>
         </div>
@@ -55,5 +71,6 @@
             </div>
         </div>
     </div>
+    <script src="/js/selectedMeals.js" defer></script>
 </body>
 </html>

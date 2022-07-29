@@ -122,10 +122,17 @@ module.exports = {
         }
     },
     getMealInfo: async (req,res)=>{
-        console.log(req.params.id)
         try {
             const data = await Recipe.find({_id: req.params.id})
-            res.render('mealInfo.ejs', {mealData: data[0]})
+            const user = await User.find({_id: req.user._id})
+            const userMeals = await Recipe.find( {_id : {$in: user[0].currentMeals}})
+
+            userMeals.forEach(meal => {
+                if(meal._id.toString() === data[0]._id.toString()){
+                    data[0].inBasket = true
+                }
+            })
+            res.render('mealInfo.ejs', {mealData: data[0], messages : req.flash('info') })
         } catch (err) {
             console.error(err)
         }
