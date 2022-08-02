@@ -45,6 +45,11 @@ header p {
 }
 
 /* Navigation */
+.main-nav{
+  max-width: 100vw;
+  overflow: scroll;
+}
+
 .main-nav ul {
   background: var(--darkFont);
   display: flex;

@@ -11,6 +11,7 @@ h1 {
   width: 75%;
   margin: 0 auto;
   margin-bottom: 2rem;
+  max-width: 1100px;
 }
 
 /* Meal Container */
@@ -162,5 +163,56 @@ h1 {
   }
   100%{
     opacity: 0;
+  }
+}
+
+@media only screen and (min-width: 0em) {
+  .meals-wrapper{
+    width: 100%;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+}
+
+@media only screen and (min-width: 500px) {
+  .meal-container{
+    max-width: 45%;
+  }
+
+  .meal-container picture {
+    width: 100%;
+  }
+
+  .meal-container picture img {
+    width: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+@media only screen and (min-width: 660px) {
+ 
+
+  .meal-container{
+    max-width: 250px;
+  }
+
+  .meal-container picture {
+    width: 250px;
+  }
+
+  .meal-container picture img {
+    width: 250px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+@media screen and (min-width: 1100px){
+  .meals-wrapper{
+    justify-content: flex-start;
   }
 }
