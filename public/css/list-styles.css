@@ -107,7 +107,7 @@ button i {
   z-index: 5;
   left: 50%;
   transform: translateX(-50%);
-  top: 50%;
+  top: 30%;
   box-shadow: var(--shadow);
 }
 
@@ -134,4 +134,72 @@ button i {
   width: 30%;
   padding: 1rem;
   font-size: 1.5rem;
+}
+
+@media only screen and (min-width: 0em) {
+  html,body{
+    min-width: fit-content;
+    margin: 0;
+    padding: 0;
+  }
+
+  .list-container{
+    width: 100%;
+  }
+
+  .list-container ul {
+    padding: 0;
+    justify-content: center;
+  }
+
+  .list-container li {
+    width: 80%;
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+
+  .alert-container{
+    width: 95%;
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  .list-container li {
+    font-size: 2.5rem;
+  }
+  .alert-container{
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 660px) {
+  .list-container li {
+    font-size: 2rem;
+    width: 40%;
+    margin-bottom: 0;
+  }
+
+  .list-container ul {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .alert-container{
+    width: 50%;
+  }
+
+}
+
+@media only screen and (min-width: 900px) {
+  .list-container{
+    width: 75%;
+  }
+  .list-container li {
+    font-size: 3rem;
+  }
+
+  .alert-container{
+    width: 40%;
+  }
 }
