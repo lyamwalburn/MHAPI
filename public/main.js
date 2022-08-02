@@ -2,6 +2,11 @@ const deleteBtn = document.querySelectorAll('.del')
 const listItem = document.querySelectorAll('span.not')
 const itemComplete = document.querySelectorAll('span.completed')
 const delAllButton = document.querySelector('.del-all').addEventListener('click', deleteAllItems)
+const startDeleteButton = document.querySelector('.del-start')
+if(startDeleteButton){
+    startDeleteButton.addEventListener('click',toggleDeleteBox)
+}
+const cancelButton = document.querySelector('.cancel').addEventListener('click',toggleDeleteBox)
 
 const item = document.querySelectorAll('.shoppingItem')
 
@@ -67,9 +72,14 @@ async function toggleDone(){
     }
 }
 
+function toggleDeleteBox(){
+    const messagebox = document.querySelector('.alert-container')
+    const message = document.querySelector('.alert-message')
+    message.textContent = `You still have items in your shopping list, are you sure you wish to delete all items this cannot be undone`
+    messagebox.classList.toggle('active')
+}
 
 async function deleteAllItems(){
-    //TODO - warn user before deleting all items
     try {
         const response = await fetch('shoppingList/clearList', {
             method: 'delete',

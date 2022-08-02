@@ -30,6 +30,12 @@
                 <a href="/recipes" class="btn large">All Recipies</a>
             </div>
         <% } %>
+        <div class="alert-container">
+            <h3>Are you Sure?</h3>
+            <p class="alert-message">You still have x items unchecked in your shopping list, are you sure you wish to delete all items this cannot be undone.</p>
+            <button class="del-all btn">Delete All</button>
+            <button class="cancel btn">Cancel</button>
+        </div>
         <div class="list-container">
             <ul>
                 <% for(let i =0; i< items.length;i++) { %>
@@ -49,7 +55,7 @@
                 <% } %>
             </ul>
             <% if(items.length >0) { %>
-                <button class="del-all btn"><i class="fa-solid fa-dumpster"></i>Delete All List Items</button>
+                <button class="del-start btn"><i class="fa-solid fa-dumpster"></i>Delete All List Items</button>
             <% } %>
         </div>
     </div>
