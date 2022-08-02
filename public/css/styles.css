@@ -33,6 +33,7 @@ header{
   color: var(--darkFont);
   padding: 4rem;
   margin-bottom: 1rem;
+  overflow: hidden;
 }
 
 header h1{
