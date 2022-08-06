@@ -401,7 +401,7 @@ form button {
     margin-right: 3rem;
 }
 
-@media only screen and (min-width: 0em) {
+  @media only screen and (min-width: 0em) {
     html,body{
       min-width: fit-content;
       margin: 0;
@@ -465,7 +465,62 @@ form button {
         margin: 0 auto;
     }
 
+    .pictureInfo label{
+        text-align: center;
+    }
+
     .active button{
         margin-top: 1rem;
     }
+}  
+
+@media only screen and (min-width: 500px) {
+    .tab .pictureInfo {
+        flex-direction: row;
+    }
+    .tracker .step{
+        padding: 2rem 4rem;
+    }
+}
+
+@media  screen and (min-width: 660px) {
+    .multiPageForm .tracker {
+        justify-content: center;
+    }
+
+    .tab .mealInfo .container{
+        flex-direction: row;
+        margin-right: 2rem;
+    }
+
+    .tab .mealInfo label{
+        width: 20%;
+        text-align: center;
+        padding: 0;
+    }
+    .tab .mealInfo input{
+        width: 70%;
+        font-size: 1.5rem;
+        margin-right: 0
+    }
+    
+    .tab .mealInfo textarea {
+        width: 70%;
+        margin-right: 0;
+    }
+    
+}
+
+@media screen and (min-width: 900px) {
+    .tab.active{
+        flex-direction: row;
+    }
+
+    .tab .mealInfo, .tab .pictureInfo{
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    /* restore to previous layout TODO */
 }
