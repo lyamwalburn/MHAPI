@@ -519,8 +519,22 @@ form button {
     .tab .mealInfo, .tab .pictureInfo{
         width: 50%;
     }
-}
+} 
 
 @media screen and (min-width: 1100px) {
     /* restore to previous layout TODO */
+    .multiPageForm{
+        width: 75%;
+    }
+
+    .tab .mealInfo label{
+        width: 20%;
+        padding-left: 3rem;
+    }   
+    .tab .mealInfo input{
+        width: 60%;
+    }
+    .tab .mealInfo textarea {
+        width: 60%;
+    }
 }
