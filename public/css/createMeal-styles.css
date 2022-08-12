@@ -473,12 +473,12 @@ form button {
         margin-top: 1rem;
     }
     /* Page 2-------------------------------- */
-    .ingredientsContainer{
+    .ingredientsContainer, .instructionsContainer{
         flex-direction: column;
         justify-content: flex-start;
         gap: 1rem;
     }
-    .ingredientsContainer .left, .ingredientsContainer .ingredientsList{
+    .ingredientsContainer .left, .ingredientsContainer .ingredientsList, .instructionsContainer .left{
         width: 100%;
     }
     .ingredientsContainer .left button{
@@ -500,8 +500,27 @@ form button {
         margin: 0;
         width: 40%;
     }
-    .active .back, .active .next{
+    .active .back, .active .next, #submitButton{
         margin: 0;
+    }
+
+    /* Page 3 */
+    .active button.addInstructionButton {
+        width: 100%;
+    }
+
+    .instructionsContainer .left{
+        height: 50%;
+    }
+
+    .instructionsContainer .instructionsList{
+        height: inherit;
+        width: 100%;
+        margin-top: 3rem;
+    }
+
+    .message.active {
+        margin: 0 auto;
     }
 }  
 
@@ -563,6 +582,23 @@ form button {
         width: 100%;
     }
 
+    /* Page 3 */
+    .instructionsContainer{
+        flex-direction: row;
+        width: 90%;
+    }
+
+    .instructionsContainer .instructionsList{
+        margin-top: 0;
+    }
+
+    .instructionsContainer .left{
+        height: 90%;
+    }
+
+    .active button.addInstructionButton {
+        width: 50%;
+    }
 } 
 
 @media screen and (min-width: 1100px) {
@@ -570,7 +606,6 @@ form button {
     .multiPageForm{
         width: 75%;
     }
-
     .tab .mealInfo label{
         width: 20%;
         padding-left: 3rem;
@@ -580,5 +615,9 @@ form button {
     }
     .tab .mealInfo textarea {
         width: 60%;
+    }
+
+    .instructionsContainer{
+        gap: 4rem;
     }
 }
