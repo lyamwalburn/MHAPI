@@ -472,6 +472,37 @@ form button {
     .active button{
         margin-top: 1rem;
     }
+    /* Page 2-------------------------------- */
+    .ingredientsContainer{
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+    .ingredientsContainer .left, .ingredientsContainer .ingredientsList{
+        width: 100%;
+    }
+    .ingredientsContainer .left button{
+        margin: 0 auto 1rem auto;
+        width: 80%;
+    }
+    .ingredientsContainer .left .message{
+        margin: 0 auto;
+    }
+    .ingredientsContainer .ingredientsList{
+        height: inherit;
+    }
+    .tab.active .buttons-container{
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 2rem;
+    }
+    .buttons-container button{
+        margin: 0;
+        width: 40%;
+    }
+    .active .back, .active .next{
+        margin: 0;
+    }
 }  
 
 @media only screen and (min-width: 500px) {
@@ -519,6 +550,19 @@ form button {
     .tab .mealInfo, .tab .pictureInfo{
         width: 50%;
     }
+
+     /* Page 2-------------------------------- */
+     .ingredientsContainer{
+        flex-direction: row;
+        justify-content: center;
+        gap: 2rem;
+        width: 90%;
+        margin: 0 auto 2rem auto;
+    }
+    .tab.active .buttons-container{
+        width: 100%;
+    }
+
 } 
 
 @media screen and (min-width: 1100px) {

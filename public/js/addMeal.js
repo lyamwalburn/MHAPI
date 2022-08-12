@@ -275,7 +275,7 @@ const uploadFile = async (file) => {
     button.addEventListener('click', ()=>{
         //check required fields
         switch(pageNumber){
-            case 0: if(!validatePageOne()) return
+            case 0: //if(!validatePageOne()) return
             break
             case 1: if(!validatePageTwo()) return
             break
