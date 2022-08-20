@@ -1,5 +1,4 @@
-<div class="main-nav">
-    <nav>
+<nav class="main-nav">
         <ul>
             <li class="<%= activePage === 0 ? 'active' : '' %>"><a href="/recipes/addRecipe"><i class="fa-solid fa-pen"></i>Create meal</a></li>
             <li class="<%= activePage === 1 ? 'active' : '' %>"><a href="/shoppingList"><i class="fa-solid fa-cart-shopping"></i>Shopping List</a></li>
@@ -7,5 +6,16 @@
             <li class="<%= activePage === 3 ? 'active' : '' %>"><a href="/recipes/selectedMeals"><i class="fa-solid fa-pizza-slice"></i>Selected Meals</a></li>
             <li><a href="/auth/logout"><i class="fa-solid fa-door-open"></i>Logout</a></li>
         </ul>
-    </nav>
-</div>
+</nav>
+<nav class="mobile-nav">
+    <p>Meal Helper</p>
+    <i class="fa-solid fa-bars"></i>
+    <ul id="mobile-nav" class="hidden">
+        <li class="<%= activePage === 0 ? 'active' : '' %>"><a href="/recipes/addRecipe"><i class="fa-solid fa-pen"></i>Create meal</a></li>
+        <li class="<%= activePage === 1 ? 'active' : '' %>"><a href="/shoppingList"><i class="fa-solid fa-cart-shopping"></i>Shopping List</a></li>
+        <li class="<%= activePage === 2 ? 'active' : '' %>"><a href="/recipes"><i class="fa-solid fa-clipboard-list"></i>All Meals</a></li>
+        <li class="<%= activePage === 3 ? 'active' : '' %>"><a href="/recipes/selectedMeals"><i class="fa-solid fa-pizza-slice"></i>Selected Meals</a></li>
+        <li><a href="/auth/logout"><i class="fa-solid fa-door-open"></i>Logout</a></li>
+    </ul>
+</nav>
+<script defer src="/js/navControl.js"></script>

@@ -234,3 +234,86 @@ header p {
       width: 120%;
   }
 }
+
+@media only screen and (min-width: 0em) {
+ 
+  .main-nav{
+    display: none;
+  }
+
+  .mobile-nav{
+    width: 100vw;
+    height: 8rem;
+    background: var(--darkFont);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
+    color: var(--light);
+  }
+
+  .mobile-nav i {
+    color: var(--light);
+    margin-right: 3rem;
+    font-size: 2rem;
+  }
+  .mobile-nav p {
+    margin-left: 3rem;
+  }
+  .mobile-nav i:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+  .mobile-nav ul.hidden{
+    display: none;
+  }
+
+  .mobile-nav ul {
+    position: absolute; 
+    top: 8rem;
+    width: 100vw;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mobile-nav ul li {
+    height: 4rem;
+    text-align: center;
+    font-size: 2rem;
+    background: var(--darkFont);
+  }
+
+  .mobile-nav ul li:hover{
+    background: #f4f7fa;
+    color: var(--darkFont);
+  }
+
+  .mobile-nav a {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1rem;
+    background: var(--darkFont);
+    color: #f4f7fa;
+    text-decoration: none;
+    padding-left: 0.8rem;
+    padding-right: .8rem;
+    text-transform: uppercase;
+    height: 100%;
+  }
+
+  .mobile-nav li.active i, .mobile-nav li.active a {
+    color: var(--buttonHover);
+  }
+
+
+  @media only screen and (min-width: 750px) {
+    .main-nav{
+      display: block;
+    }
+    .mobile-nav { 
+      display: none;
+    }
+  }
+}
