@@ -5,4 +5,5 @@ Fix styling on shopping list and meal card(instructions)
 make adding a meal more robust and add styling [x]
 fix styling on recipes screen specifically meal cards [x]
 remove bootstrap styling from signup and login page [x]
-change nav bar to hamburger menu on smaller screens []
+change nav bar to hamburger menu on smaller screens [x]
+fix styles for smallers screens on meal-info pages []
