@@ -48,7 +48,7 @@ header p {
 /* Navigation */
 .main-nav{
   max-width: 100vw;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 .main-nav ul {
