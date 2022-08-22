@@ -132,8 +132,8 @@ body{
       font-size: 2rem;
       width: 60%;
       margin: 2rem auto;
-  }
-  .form-group label, .form-group input, .container p {
+    }
+    .form-group label, .form-group input, .container p {
     font-size: 2rem;
     }
   }
