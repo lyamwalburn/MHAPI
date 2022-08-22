@@ -272,3 +272,164 @@ li picture {
   }
 
 }
+@media only screen and (min-width: 500px) {
+  .ingredients ul {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .ingredients ul li {
+    width: 45%;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .meal-info{
+    flex-direction: row;
+    padding-top: 2rem;
+  }
+  .meal-info .left{
+    width: 50%;
+    padding: 1rem;
+  }
+  .meal-info .left img{
+    max-width: 100%;
+    height: 75%;
+    aspect-ratio: 1;
+  }
+  .meal-info .right{
+    width: 50%;
+    text-align: right;
+  }
+  .meal-info .right h2{
+      font-size: 2rem;
+      text-align: right;
+  }
+  .meal-info .right p {
+    font-size: 1.5rem;
+  }
+
+  .instructions ul li {
+    flex-direction: row;
+  }
+}
+
+@media only screen and (min-width: 660px) {
+  .meal-info .left img{
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media only screen and (min-width: 760px) {
+  .meal-info .right h2{
+    font-size: 3rem;
+    text-align: center;
+  }
+  .meal-info .right p {
+    font-size: 1.7rem;
+    margin-top: 2rem;
+  } 
+
+  .right .container{
+    margin: auto 0;
+  }
+  .right form {
+    margin: auto auto 2rem auto;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+.info-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+  .meal-info .right h2{
+    font-size: 4rem;
+  }
+  .meal-info .right p {
+    font-size: 2rem;
+  }
+
+  .right form {
+    margin-top: 1rem;
+  }
+  .ingredients {
+    width: 35%;
+    height: fit-content;
+    margin: 0 0 0 2rem;
+  }
+  .ingredients h3{
+    text-align: left;
+    margin-left: 4rem;
+  }
+  .ingredients ul li {
+    width: 100%;
+    justify-content: flex-start;
+    margin-left: 2rem;
+  }
+
+  .instructions{
+    width: 60%;
+    margin: 0;
+    margin-right: auto;
+  }
+
+  .instructions ul {
+    margin-top: 2rem;
+  }
+
+  .instructions ul li {
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 1050px){
+
+  .info-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+  }
+  .meal-info{
+    max-width: 1000px;
+    max-height: 530px;
+    margin: 0;
+    width: 100%;
+    margin-top: 2rem;
+  }
+  .right h2{
+    margin-top: 3rem;
+  }
+  .right p {
+    font-size: 2rem;
+    text-align: left;
+  }
+  .right .container {
+    margin: 2rem auto auto 1rem;
+    justify-content: flex-start;
+    gap: 2rem;
+  }
+  .right form {
+    margin: auto 2rem 2rem auto;
+  }
+  .meal-info .left {
+    max-width: 500px;
+    max-height: 500px;
+  }
+
+  .ingredients {
+    max-width: 370px;
+    margin-left: 0;
+  }
+  .instructions{
+    max-width: 650px;
+    width: 63%;
+    margin-right: 0;
+    margin-left: auto;
+  }
+}
