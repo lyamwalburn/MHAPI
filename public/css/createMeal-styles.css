@@ -247,7 +247,7 @@ form button {
     cursor: pointer;
     width: 25%;
     height: 11rem;
-    overflow:scroll;
+    overflow:hidden;
 }
 
 .photoUpload.focus {

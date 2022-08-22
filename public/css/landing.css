@@ -147,4 +147,7 @@
     .cta-container .signup {
         max-width: 30%;
     }
+    .cta-container .signup .btn{
+        width: 40%;
+    }
   }
