@@ -616,4 +616,7 @@ form button {
     .instructionsContainer{
         gap: 4rem;
     }
+    .mealInfo .container .message{
+        margin: 0 auto 1rem 20rem;
+    }
 }

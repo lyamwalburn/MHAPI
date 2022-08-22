@@ -32,10 +32,6 @@
   }
 }
 
-.main-nav{
-  /* grid-column: 1/5; */
-}
-
 .meal-info {
   /* grid-column: 1/5; */
   display: flex;
