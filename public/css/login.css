@@ -96,3 +96,44 @@ body{
       opacity: 0;
     }
   }
+
+  @media only screen and (min-width: 0em) {
+      .container{
+        width: 95%;
+        height: fit-content;
+      }
+      .container form {
+        width: 95%;
+      }
+      .form-group label, .form-group input {
+        font-size: 4rem;
+        margin-bottom: 2rem;
+      }
+      .container .btn {
+        width: 80%;
+        margin: 2rem auto;
+      }
+      .container p {
+        font-size: 4rem;
+      }
+  }
+
+  @media only screen and (min-width: 660px) {
+    .container{
+      width: 80%;
+    }
+    .form-group label, .form-group input, .container p {
+      font-size: 3rem;
+    }
+  }
+
+  @media only screen and (min-width: 800px) {
+    .container{
+      font-size: 2rem;
+      width: 60%;
+      margin: 2rem auto;
+  }
+  .form-group label, .form-group input, .container p {
+    font-size: 2rem;
+    }
+  }
