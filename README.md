@@ -11,18 +11,18 @@ While there is scope to implement further features and improve upon the current 
 
 Future goals
 
-Add new ingredients into app, currently this must be done manually - []
-Add an export to plain text/email/other todo app for shopping lists - []
-Fix DB structure to include an ingredients table, this would simplify some of the work arounds that arose later in the project - []
-Get price data from current supermarket prices and give an indication of cost per meal - []
-Add the ability to search for meal types e.g. pasta,indian,chicken,vegitarian - []
-Pagenation when loading all recipies in - []
-Tidy up css - []
-accessibility/html tags improvements - []
-add mobile versions of larger images - []
-pictures for the cooking steps - []
-scale recipie ammounts based on how many people user wishes to feed, currently all recipes are for two people - []
-email verification when signing up - []
-recapatcha when creating meals to prevent bot spam - []
-forgotton password functionality - []
-my account page for users personal info/preferences/password change - []
+Add new ingredients into app, currently this must be done manually - []<br>
+Add an export to plain text/email/other todo app for shopping lists - []<br>
+Fix DB structure to include an ingredients table, this would simplify some of the work arounds that arose later in the project - []<br>
+Get price data from current supermarket prices and give an indication of cost per meal - []<br>
+Add the ability to search for meal types e.g. pasta,indian,chicken,vegitarian - []<br>
+Pagenation when loading all recipies in - []<br>
+Tidy up css - []<br>
+accessibility/html tags improvements - []<br>
+add mobile versions of larger images - []<br>
+pictures for the cooking steps - []<br>
+scale recipie ammounts based on how many people user wishes to feed, currently all recipes are for two people - []<br>
+email verification when signing up - []<br>
+recapatcha when creating meals to prevent bot spam - []<br>
+forgotton password functionality - []<br>
+my account page for users personal info/preferences/password change - []<br>
